@@ -1,0 +1,16 @@
+# Cloud Custodian Documentation Project Dependencies
+
+# Cloud Custodian - Main package for schema generation
+c7n>=0.9.0
+
+# Documentation generation
+pyyaml>=6.0
+requests>=2.25.0
+
+# Development dependencies
+pytest>=7.0.0
+black>=22.0.0
+flake8>=4.0.0
+
+# Optional: For enhanced markdown processing
+markdown>=3.4.0
