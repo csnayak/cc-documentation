@@ -1,19 +1,23 @@
 ---
 Title: Aws.Dynamodb Table
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.dynamodb-table
 ---
 
-# AWS Resources Covered
-- [aws.dynamodb-table](#aws-dynamodb-table)
+# AWS.DYNAMODB-TABLE
+
+AWS Resource Type: `aws.dynamodb-table`
+
 
 ## Table of Contents
-- [AWS.DYNAMODB-TABLE](#aws-dynamodb-table)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.DYNAMODB-TABLE
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [backup](#action-backup)
 - [copy-related-tag](#action-copy-related-tag)
@@ -33,7 +37,7 @@ Version: 1.0
 - [update](#action-update)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [consecutive-aws-backups](#filter-consecutive-aws-backups)
 - [consecutive-backups](#filter-consecutive-backups)
@@ -51,7 +55,7 @@ Version: 1.0
 - [reduce](#filter-reduce)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -133,6 +137,7 @@ required:
 - type
 ```
 
+
 ### Action: backup
 <a name="action-backup"></a>
 📌 **Description:**
@@ -168,6 +173,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -251,6 +257,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -286,6 +293,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -357,6 +365,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -420,6 +429,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -473,6 +483,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -661,6 +672,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -783,6 +795,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -870,6 +883,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -961,6 +975,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -995,6 +1010,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
@@ -1047,6 +1063,7 @@ required:
 - type
 ```
 
+
 ### Action: set-continuous-backup
 <a name="action-set-continuous-backup"></a>
 📌 **Description:**
@@ -1085,6 +1102,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-stream
 <a name="action-set-stream"></a>
@@ -1125,6 +1143,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: tag
 <a name="action-tag"></a>
@@ -1177,6 +1196,7 @@ required:
 - type
 ```
 
+
 ### Action: update
 <a name="action-update"></a>
 📌 **Description:**
@@ -1224,6 +1244,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1290,7 +1311,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1361,6 +1383,7 @@ required:
 - rules
 ```
 
+
 ### Filter: consecutive-aws-backups
 <a name="filter-consecutive-aws-backups"></a>
 📌 **Description:**
@@ -1413,6 +1436,7 @@ required:
 - status
 - type
 ```
+
 
 ### Filter: consecutive-backups
 <a name="filter-consecutive-backups"></a>
@@ -1472,6 +1496,7 @@ required:
 - backuptype
 - type
 ```
+
 
 ### Filter: continuous-backup
 <a name="filter-continuous-backup"></a>
@@ -1594,6 +1619,7 @@ required:
 - type
 ```
 
+
 ### Filter: cross-account
 <a name="filter-cross-account"></a>
 📌 **Description:**
@@ -1620,6 +1646,8 @@ items:
 type: string
 type: array
 everyone_only:
+type: boolean
+return_allowed:
 type: boolean
 type:
 enum:
@@ -1748,6 +1776,7 @@ required:
 - type
 ```
 
+
 ### Filter: event
 <a name="filter-event"></a>
 📌 **Description:**
@@ -1856,6 +1885,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1923,6 +1953,7 @@ required:
 - type
 ```
 
+
 ### Filter: has-statement
 <a name="filter-has-statement"></a>
 📌 **Description:**
@@ -1931,8 +1962,8 @@ required:
 
 Find resources with matching access policy statements.
 
-If you want to return resource statements that include the listed Action or
-NotAction, you can use PartialMatch instead of an exact match.
+If you want to return resource statements that include the listed key,
+e.g. Action, you can use PartialMatch instead of an exact match.
 
 📌 **Example Usage:**
 
@@ -2000,11 +2031,21 @@ anyOf:
 - enum:
 - Action
 - NotAction
+- Principal
+- NotPrincipal
+- Resource
+- NotResource
+- Condition
 type: string
 - items:
 - enum:
 - Action
 - NotAction
+- Principal
+- NotPrincipal
+- Resource
+- NotResource
+- Condition
 type: string
 type: array
 Principal:
@@ -2028,6 +2069,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: health-event
 <a name="filter-health-event"></a>
@@ -2081,6 +2123,7 @@ type: array
 required:
 - type
 ```
+
 
 ### Filter: kms-key
 <a name="filter-kms-key"></a>
@@ -2218,6 +2261,7 @@ required:
 - type
 ```
 
+
 ### Filter: list-item
 <a name="filter-list-item"></a>
 📌 **Description:**
@@ -2337,6 +2381,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -2410,6 +2455,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: metrics
 <a name="filter-metrics"></a>
@@ -2530,6 +2576,7 @@ required:
 - name
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -2586,6 +2633,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -2681,6 +2729,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -2789,3 +2838,4 @@ enum:
 required:
 - type
 ```
+

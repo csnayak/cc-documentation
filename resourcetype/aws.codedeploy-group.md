@@ -1,19 +1,23 @@
 ---
 Title: Aws.Codedeploy Group
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.codedeploy-group
 ---
 
-# AWS Resources Covered
-- [aws.codedeploy-group](#aws-codedeploy-group)
+# AWS.CODEDEPLOY-GROUP
+
+AWS Resource Type: `aws.codedeploy-group`
+
 
 ## Table of Contents
-- [AWS.CODEDEPLOY-GROUP](#aws-codedeploy-group)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.CODEDEPLOY-GROUP
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [delete](#action-delete)
@@ -29,7 +33,8 @@ Version: 1.0
 - [tag](#action-tag)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
+- [config](#filter-config)
 - [config-compliance](#filter-config-compliance)
 - [event](#filter-event)
 - [finding](#filter-finding)
@@ -40,7 +45,7 @@ Version: 1.0
 - [tag-count](#filter-tag-count)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -121,6 +126,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -204,6 +210,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -231,6 +238,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -302,6 +310,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -365,6 +374,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -418,6 +428,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -606,6 +617,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -728,6 +740,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -815,6 +828,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -906,6 +920,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -940,6 +955,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
@@ -992,6 +1008,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1042,6 +1059,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1108,7 +1126,124 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
+
+### Filter: config
+<a name="filter-config"></a>
+📌 **Description:**
+
+----
+
+Filter Code Deploy Groups by their Config
+
+📌 **Example Usage:**
+
+<!-- Get all groups where config type is Lambda -->
+
+```yaml
+policies:
+          - name: deploy-groups-where-config-type-lambda
+            resource: aws.codedeploy-group
+            filters:
+              - type: config
+                key: computePlatform
+                value: Lambda
+```
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+default:
+type: object
+key:
+type: string
+op:
+enum:
+- eq
+- equal
+- ne
+- not-equal
+- gt
+- greater-than
+- ge
+- gte
+- le
+- lte
+- lt
+- less-than
+- glob
+- regex
+- regex-case
+- in
+- ni
+- not-in
+- contains
+- difference
+- intersect
+- mod
+type:
+enum:
+- config
+value:
+oneOf:
+- type: array
+- type: string
+- type: boolean
+- type: number
+- type: 'null'
+value_from:
+additionalProperties: 'False'
+properties:
+expr:
+oneOf:
+- type: integer
+- type: string
+format:
+enum:
+- csv
+- json
+- txt
+- csv2dict
+headers:
+patternProperties:
+'':
+type: string
+type: object
+query:
+type: string
+url:
+type: string
+required:
+- url
+type: object
+value_path:
+type: string
+value_regex:
+type: string
+value_type:
+enum:
+- age
+- integer
+- expiration
+- normalize
+- size
+- cidr
+- cidr_size
+- swap
+- resource_count
+- expr
+- unique_size
+- date
+- version
+- float
+required:
+- type
+```
+
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1178,6 +1313,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1287,6 +1423,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1353,6 +1490,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1473,6 +1611,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -1547,6 +1686,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1603,6 +1743,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1699,6 +1840,7 @@ required:
 - type
 ```
 
+
 ### Filter: tag-count
 <a name="filter-tag-count"></a>
 📌 **Description:**
@@ -1766,6 +1908,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -1874,3 +2017,4 @@ enum:
 required:
 - type
 ```
+

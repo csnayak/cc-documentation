@@ -1,19 +1,23 @@
 ---
 Title: Aws.Security Group
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.security-group
 ---
 
-# AWS Resources Covered
-- [aws.security-group](#aws-security-group)
+# AWS.SECURITY-GROUP
+
+AWS Resource Type: `aws.security-group`
+
 
 ## Table of Contents
-- [AWS.SECURITY-GROUP](#aws-security-group)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.SECURITY-GROUP
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [delete](#action-delete)
@@ -34,7 +38,7 @@ Version: 1.0
 - [tag-trim](#action-tag-trim)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [default-vpc](#filter-default-vpc)
 - [diff](#filter-diff)
@@ -52,7 +56,7 @@ Version: 1.0
 - [used](#filter-used)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -133,6 +137,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -216,6 +221,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -251,6 +257,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -322,6 +329,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -385,6 +393,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -445,6 +454,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: normalize-tag
 <a name="action-normalize-tag"></a>
@@ -518,6 +528,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -706,6 +717,7 @@ enum:
 - notify
 ```
 
+
 ### Action: patch
 <a name="action-patch"></a>
 📌 **Description:**
@@ -733,6 +745,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: post-finding
 <a name="action-post-finding"></a>
@@ -856,6 +869,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -943,6 +957,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1034,6 +1049,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-permissions
 <a name="action-remove-permissions"></a>
 📌 **Description:**
@@ -1080,6 +1096,7 @@ required:
 - type
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1115,6 +1132,7 @@ required:
 - type
 ```
 
+
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
 📌 **Description:**
@@ -1146,6 +1164,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-permissions
 <a name="action-set-permissions"></a>
@@ -1237,6 +1256,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1273,6 +1293,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: tag-trim
 <a name="action-tag-trim"></a>
@@ -1340,6 +1361,7 @@ required:
 - type
 ```
 
+
 ### Action: webhook
 <a name="action-webhook"></a>
 📌 **Description:**
@@ -1405,7 +1427,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1476,6 +1499,7 @@ required:
 - rules
 ```
 
+
 ### Filter: default-vpc
 <a name="filter-default-vpc"></a>
 📌 **Description:**
@@ -1506,6 +1530,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: diff
 <a name="filter-diff"></a>
@@ -1549,6 +1574,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: egress
 <a name="filter-egress"></a>
@@ -1758,6 +1784,7 @@ required:
 - type
 ```
 
+
 ### Filter: event
 <a name="filter-event"></a>
 📌 **Description:**
@@ -1866,6 +1893,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1932,6 +1960,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: ingress
 <a name="filter-ingress"></a>
@@ -2141,6 +2170,7 @@ required:
 - type
 ```
 
+
 ### Filter: list-item
 <a name="filter-list-item"></a>
 📌 **Description:**
@@ -2260,6 +2290,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -2334,6 +2365,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -2390,6 +2422,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -2486,6 +2519,7 @@ required:
 - type
 ```
 
+
 ### Filter: stale
 <a name="filter-stale"></a>
 📌 **Description:**
@@ -2522,6 +2556,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: tag-count
 <a name="filter-tag-count"></a>
@@ -2591,6 +2626,7 @@ required:
 - type
 ```
 
+
 ### Filter: unused
 <a name="filter-unused"></a>
 📌 **Description:**
@@ -2633,6 +2669,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: used
 <a name="filter-used"></a>
@@ -2705,6 +2742,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -2813,3 +2851,4 @@ enum:
 required:
 - type
 ```
+

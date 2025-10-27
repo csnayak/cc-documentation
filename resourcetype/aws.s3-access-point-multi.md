@@ -1,19 +1,23 @@
 ---
 Title: Aws.S3 Access Point Multi
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.s3-access-point-multi
 ---
 
-# AWS Resources Covered
-- [aws.s3-access-point-multi](#aws-s3-access-point-multi)
+# AWS.S3-ACCESS-POINT-MULTI
+
+AWS Resource Type: `aws.s3-access-point-multi`
+
 
 ## Table of Contents
-- [AWS.S3-ACCESS-POINT-MULTI](#aws-s3-access-point-multi)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.S3-ACCESS-POINT-MULTI
-
-### Available Actions
+## Available Actions
 - [invoke-lambda](#action-invoke-lambda)
 - [invoke-sfn](#action-invoke-sfn)
 - [notify](#action-notify)
@@ -22,8 +26,9 @@ Version: 1.0
 - [put-metric](#action-put-metric)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
+- [cross-account](#filter-cross-account)
 - [event](#filter-event)
 - [finding](#filter-finding)
 - [list-item](#filter-list-item)
@@ -31,7 +36,7 @@ Version: 1.0
 - [reduce](#filter-reduce)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -103,6 +108,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -165,6 +171,7 @@ required:
 - state-machine
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -353,6 +360,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -475,6 +483,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -562,6 +571,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -653,6 +663,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: webhook
 <a name="action-webhook"></a>
 📌 **Description:**
@@ -718,7 +729,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -788,6 +800,164 @@ enum:
 required:
 - rules
 ```
+
+
+### Filter: cross-account
+<a name="filter-cross-account"></a>
+📌 **Description:**
+
+----
+
+Check a resource's embedded iam policy for cross account access.
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: cross-account
+```
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+actions:
+items:
+type: string
+type: array
+everyone_only:
+type: boolean
+return_allowed:
+type: boolean
+type:
+enum:
+- cross-account
+whitelist:
+items:
+type: string
+type: array
+whitelist_conditions:
+items:
+type: string
+type: array
+whitelist_from:
+additionalProperties: 'False'
+properties:
+expr:
+oneOf:
+- type: integer
+- type: string
+format:
+enum:
+- csv
+- json
+- txt
+- csv2dict
+headers:
+patternProperties:
+'':
+type: string
+type: object
+query:
+type: string
+url:
+type: string
+required:
+- url
+type: object
+whitelist_orgids:
+items:
+type: string
+type: array
+whitelist_orgids_from:
+additionalProperties: 'False'
+properties:
+expr:
+oneOf:
+- type: integer
+- type: string
+format:
+enum:
+- csv
+- json
+- txt
+- csv2dict
+headers:
+patternProperties:
+'':
+type: string
+type: object
+query:
+type: string
+url:
+type: string
+required:
+- url
+type: object
+whitelist_vpc:
+items:
+type: string
+type: array
+whitelist_vpc_from:
+additionalProperties: 'False'
+properties:
+expr:
+oneOf:
+- type: integer
+- type: string
+format:
+enum:
+- csv
+- json
+- txt
+- csv2dict
+headers:
+patternProperties:
+'':
+type: string
+type: object
+query:
+type: string
+url:
+type: string
+required:
+- url
+type: object
+whitelist_vpce:
+items:
+type: string
+type: array
+whitelist_vpce_from:
+additionalProperties: 'False'
+properties:
+expr:
+oneOf:
+- type: integer
+- type: string
+format:
+enum:
+- csv
+- json
+- txt
+- csv2dict
+headers:
+patternProperties:
+'':
+type: string
+type: object
+query:
+type: string
+url:
+type: string
+required:
+- url
+type: object
+required:
+- type
+```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -897,6 +1067,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -963,6 +1134,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1083,6 +1255,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1139,6 +1312,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1234,6 +1408,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -1342,3 +1517,4 @@ enum:
 required:
 - type
 ```
+

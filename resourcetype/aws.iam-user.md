@@ -1,19 +1,23 @@
 ---
 Title: Aws.Iam User
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.iam-user
 ---
 
-# AWS Resources Covered
-- [aws.iam-user](#aws-iam-user)
+# AWS.IAM-USER
+
+AWS Resource Type: `aws.iam-user`
+
 
 ## Table of Contents
-- [AWS.IAM-USER](#aws-iam-user)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.IAM-USER
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [delete](#action-delete)
@@ -33,7 +37,7 @@ Version: 1.0
 - [tag](#action-tag)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [access-key](#filter-access-key)
 - [check-permissions](#filter-check-permissions)
 - [config-compliance](#filter-config-compliance)
@@ -53,7 +57,7 @@ Version: 1.0
 - [usage](#filter-usage)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -134,6 +138,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -216,6 +221,7 @@ required:
 - resource
 - type
 ```
+
 
 ### Action: delete
 <a name="action-delete"></a>
@@ -345,6 +351,7 @@ required:
 - type
 ```
 
+
 ### Action: delete-ssh-keys
 <a name="action-delete-ssh-keys"></a>
 📌 **Description:**
@@ -378,6 +385,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -449,6 +457,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -512,6 +521,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -572,6 +582,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -760,6 +771,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -882,6 +894,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -969,6 +982,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1060,6 +1074,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-keys
 <a name="action-remove-keys"></a>
 📌 **Description:**
@@ -1068,8 +1083,8 @@ required:
 
 Delete or disable user's access keys.
 
-For example if we wanted to disable keys after 90 days of non-use and
-delete them after 180 days of nonuse:
+For example if we wanted to disable keys 90 days after creation and
+delete them 180 days after creation:
 
 📌 **Example Usage:**
 
@@ -1100,6 +1115,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
@@ -1136,6 +1152,7 @@ required:
 - type
 ```
 
+
 ### Action: set-boundary
 <a name="action-set-boundary"></a>
 📌 **Description:**
@@ -1171,6 +1188,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-groups
 <a name="action-set-groups"></a>
@@ -1213,6 +1231,7 @@ required:
 - group
 - type
 ```
+
 
 ### Action: set-policy
 <a name="action-set-policy"></a>
@@ -1266,6 +1285,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1302,6 +1322,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1368,7 +1389,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: access-key
 <a name="filter-access-key"></a>
@@ -1497,6 +1519,7 @@ required:
 - type
 ```
 
+
 ### Filter: check-permissions
 <a name="filter-check-permissions"></a>
 📌 **Description:**
@@ -1566,6 +1589,7 @@ required:
 - match
 ```
 
+
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
 📌 **Description:**
@@ -1634,6 +1658,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: credential
 <a name="filter-credential"></a>
@@ -1773,6 +1798,7 @@ required:
 - type
 ```
 
+
 ### Filter: event
 <a name="filter-event"></a>
 📌 **Description:**
@@ -1881,6 +1907,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1947,6 +1974,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: group
 <a name="filter-group"></a>
@@ -2061,6 +2089,7 @@ required:
 - type
 ```
 
+
 ### Filter: has-inline-policy
 <a name="filter-has-inline-policy"></a>
 📌 **Description:**
@@ -2093,6 +2122,7 @@ type: boolean
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -2213,6 +2243,7 @@ required:
 - type
 ```
 
+
 ### Filter: login-profile
 <a name="filter-login-profile"></a>
 📌 **Description:**
@@ -2332,6 +2363,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -2405,6 +2437,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: mfa-device
 <a name="filter-mfa-device"></a>
@@ -2519,6 +2552,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -2575,6 +2609,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: policy
 <a name="filter-policy"></a>
@@ -2692,6 +2727,7 @@ required:
 - type
 ```
 
+
 ### Filter: reduce
 <a name="filter-reduce"></a>
 📌 **Description:**
@@ -2786,6 +2822,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: ssh-key
 <a name="filter-ssh-key"></a>
@@ -2904,6 +2941,7 @@ required:
 - type
 ```
 
+
 ### Filter: usage
 <a name="filter-usage"></a>
 📌 **Description:**
@@ -3006,6 +3044,7 @@ enum:
 required:
 - match-operator
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -3114,3 +3153,4 @@ enum:
 required:
 - type
 ```
+

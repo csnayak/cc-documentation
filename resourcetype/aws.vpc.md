@@ -1,19 +1,23 @@
 ---
 Title: Aws.Vpc
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.vpc
 ---
 
-# AWS Resources Covered
-- [aws.vpc](#aws-vpc)
+# AWS.VPC
+
+AWS Resource Type: `aws.vpc`
+
 
 ## Table of Contents
-- [AWS.VPC](#aws-vpc)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.VPC
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [delete-empty](#action-delete-empty)
@@ -33,7 +37,7 @@ Version: 1.0
 - [tag-trim](#action-tag-trim)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [dhcp-options](#filter-dhcp-options)
 - [event](#filter-event)
@@ -53,7 +57,7 @@ Version: 1.0
 - [vpc-attributes](#filter-vpc-attributes)
 - [vpc-endpoint](#filter-vpc-endpoint)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -134,6 +138,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -217,6 +222,7 @@ required:
 - type
 ```
 
+
 ### Action: delete-empty
 <a name="action-delete-empty"></a>
 📌 **Description:**
@@ -246,6 +252,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -317,6 +324,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -380,6 +388,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -441,6 +450,7 @@ required:
 - type
 ```
 
+
 ### Action: modify
 <a name="action-modify"></a>
 📌 **Description:**
@@ -474,6 +484,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: normalize-tag
 <a name="action-normalize-tag"></a>
@@ -547,6 +558,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -735,6 +747,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -857,6 +870,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -944,6 +958,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1035,6 +1050,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1070,6 +1086,7 @@ required:
 - type
 ```
 
+
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
 📌 **Description:**
@@ -1101,6 +1118,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-flow-log
 <a name="action-set-flow-log"></a>
@@ -1168,6 +1186,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1204,6 +1223,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: tag-trim
 <a name="action-tag-trim"></a>
@@ -1271,6 +1291,7 @@ required:
 - type
 ```
 
+
 ### Action: webhook
 <a name="action-webhook"></a>
 📌 **Description:**
@@ -1336,7 +1357,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1407,6 +1429,7 @@ required:
 - rules
 ```
 
+
 ### Filter: dhcp-options
 <a name="filter-dhcp-options"></a>
 📌 **Description:**
@@ -1464,6 +1487,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1573,6 +1597,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1639,6 +1664,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: flow-logs
 <a name="filter-flow-logs"></a>
@@ -1787,6 +1813,7 @@ required:
 - type
 ```
 
+
 ### Filter: internet-gateway
 <a name="filter-internet-gateway"></a>
 📌 **Description:**
@@ -1905,6 +1932,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -2025,6 +2053,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -2098,6 +2127,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: metrics
 <a name="filter-metrics"></a>
@@ -2218,6 +2248,7 @@ required:
 - name
 ```
 
+
 ### Filter: nat-gateway
 <a name="filter-nat-gateway"></a>
 📌 **Description:**
@@ -2337,6 +2368,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -2393,6 +2425,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -2488,6 +2521,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: security-group
 <a name="filter-security-group"></a>
@@ -2608,6 +2642,7 @@ required:
 - type
 ```
 
+
 ### Filter: subnet
 <a name="filter-subnet"></a>
 📌 **Description:**
@@ -2727,6 +2762,7 @@ required:
 - type
 ```
 
+
 ### Filter: tag-count
 <a name="filter-tag-count"></a>
 📌 **Description:**
@@ -2794,6 +2830,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -2903,6 +2940,7 @@ required:
 - type
 ```
 
+
 ### Filter: vpc-attributes
 <a name="filter-vpc-attributes"></a>
 📌 **Description:**
@@ -2940,6 +2978,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: vpc-endpoint
 <a name="filter-vpc-endpoint"></a>
@@ -3053,3 +3092,4 @@ enum:
 required:
 - type
 ```
+

@@ -1,21 +1,26 @@
 ---
 Title: Aws.Apigwv2
 Category: Cloud Custodian
-Last Updated: 2025-03-21
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.apigwv2
 ---
 
-# AWS Resources Covered
-- [aws.apigwv2](#aws-apigwv2)
+# AWS.APIGWV2
+
+AWS Resource Type: `aws.apigwv2`
+
 
 ## Table of Contents
-- [AWS.APIGWV2](#aws-apigwv2)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.APIGWV2
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
+- [delete](#action-delete)
 - [invoke-lambda](#action-invoke-lambda)
 - [invoke-sfn](#action-invoke-sfn)
 - [mark-for-op](#action-mark-for-op)
@@ -26,9 +31,10 @@ Version: 1.0
 - [remove-tag](#action-remove-tag)
 - [rename-tag](#action-rename-tag)
 - [tag](#action-tag)
+- [update](#action-update)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [event](#filter-event)
 - [finding](#filter-finding)
@@ -39,7 +45,7 @@ Version: 1.0
 - [reduce](#filter-reduce)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -120,6 +126,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -203,6 +210,41 @@ required:
 - type
 ```
 
+
+### Action: delete
+<a name="action-delete"></a>
+📌 **Description:**
+
+----
+
+Delete an HTTP or WebSocket API.
+
+📌 **Example Usage:**
+
+```yaml
+policies:
+- name: apigwv2-delete
+  resource: apigwv2
+  filters:
+    - Name: empty
+  actions:
+    - type: delete
+```
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+type:
+enum:
+- delete
+required:
+- type
+```
+
+
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
 📌 **Description:**
@@ -273,6 +315,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -336,6 +379,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -389,6 +433,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -577,6 +622,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -699,6 +745,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -786,6 +833,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -877,6 +925,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -911,6 +960,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
@@ -963,6 +1013,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1013,6 +1064,96 @@ type: string
 required:
 - type
 ```
+
+
+### Action: update
+<a name="action-update"></a>
+📌 **Description:**
+
+----
+
+Update configuration of a WebSocket or HTTP API.
+
+https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/apigatewayv2/client/update_api.html
+
+📌 **Example Usage:**
+
+```yaml
+policies:
+ - name: apigw-update
+   resource: apigwv2
+   filters:
+     - Name: c7n-test
+   actions:
+     - type: update
+       CorsConfiguration:
+         AllowCredentials: False
+         MaxAge: 60
+       Description: My APIv2
+       DisableExecuteApiEndpoint: False
+```
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+ApiKeySelectionExpression:
+type: string
+CorsConfiguration:
+properties:
+AllowCredentials:
+type: boolean
+AllowHeaders:
+items:
+type: string
+type: array
+AllowMethods:
+items:
+type: string
+type: array
+AllowOrigins:
+items:
+type: string
+type: array
+ExposeHeaders:
+items:
+type: string
+type: array
+MaxAge:
+type: integer
+type: object
+CredentialsArn:
+type: string
+Description:
+type: string
+DisableExecuteApiEndpoint:
+type: boolean
+DisableSchemaValidation:
+type: boolean
+IpAddressType:
+enum:
+- ipv4
+- dualstack
+type: string
+Name:
+type: string
+RouteKey:
+type: string
+RouteSelectionExpression:
+type: string
+Target:
+type: string
+Version:
+type: string
+type:
+enum:
+- update
+required:
+- type
+```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1079,7 +1220,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1149,6 +1291,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1258,6 +1401,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1324,6 +1468,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1444,6 +1589,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -1517,6 +1663,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: metrics
 <a name="filter-metrics"></a>
@@ -1637,6 +1784,7 @@ required:
 - name
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1693,6 +1841,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1788,6 +1937,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -1896,3 +2046,4 @@ enum:
 required:
 - type
 ```
+

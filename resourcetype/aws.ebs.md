@@ -1,19 +1,23 @@
 ---
 Title: Aws.Ebs
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.ebs
 ---
 
-# AWS Resources Covered
-- [aws.ebs](#aws-ebs)
+# AWS.EBS
+
+AWS Resource Type: `aws.ebs`
+
 
 ## Table of Contents
-- [AWS.EBS](#aws-ebs)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.EBS
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-instance-tags](#action-copy-instance-tags)
 - [copy-related-tag](#action-copy-related-tag)
@@ -36,7 +40,7 @@ Version: 1.0
 - [tag-trim](#action-tag-trim)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [cost-optimization](#filter-cost-optimization)
 - [event](#filter-event)
@@ -55,7 +59,7 @@ Version: 1.0
 - [tag-count](#filter-tag-count)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -137,6 +141,7 @@ required:
 - type
 ```
 
+
 ### Action: copy-instance-tags
 <a name="action-copy-instance-tags"></a>
 📌 **Description:**
@@ -186,6 +191,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -269,6 +275,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -309,6 +316,7 @@ required:
 - type
 ```
 
+
 ### Action: detach
 <a name="action-detach"></a>
 📌 **Description:**
@@ -346,6 +354,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: encrypt-instance-volumes
 <a name="action-encrypt-instance-volumes"></a>
@@ -410,6 +419,7 @@ required:
 - key
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -481,6 +491,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -544,6 +555,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -604,6 +616,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: modify
 <a name="action-modify"></a>
@@ -703,6 +716,7 @@ required:
 - type
 ```
 
+
 ### Action: normalize-tag
 <a name="action-normalize-tag"></a>
 📌 **Description:**
@@ -775,6 +789,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -963,6 +978,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -1085,6 +1101,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -1172,6 +1189,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1263,6 +1281,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1298,6 +1317,7 @@ required:
 - type
 ```
 
+
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
 📌 **Description:**
@@ -1329,6 +1349,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: snapshot
 <a name="action-snapshot"></a>
@@ -1391,6 +1412,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1427,6 +1449,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: tag-trim
 <a name="action-tag-trim"></a>
@@ -1494,6 +1517,7 @@ required:
 - type
 ```
 
+
 ### Action: webhook
 <a name="action-webhook"></a>
 📌 **Description:**
@@ -1559,7 +1583,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1629,6 +1654,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: cost-optimization
 <a name="filter-cost-optimization"></a>
@@ -1715,6 +1741,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1824,6 +1851,7 @@ required:
 - type
 ```
 
+
 ### Filter: fault-tolerant
 <a name="filter-fault-tolerant"></a>
 📌 **Description:**
@@ -1860,6 +1888,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: finding
 <a name="filter-finding"></a>
@@ -1928,6 +1957,7 @@ required:
 - type
 ```
 
+
 ### Filter: health-event
 <a name="filter-health-event"></a>
 📌 **Description:**
@@ -1976,6 +2006,7 @@ type: array
 required:
 - type
 ```
+
 
 ### Filter: instance
 <a name="filter-instance"></a>
@@ -2090,6 +2121,7 @@ required:
 - type
 ```
 
+
 ### Filter: kms-alias
 <a name="filter-kms-alias"></a>
 📌 **Description:**
@@ -2197,6 +2229,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -2317,6 +2350,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -2390,6 +2424,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: metrics
 <a name="filter-metrics"></a>
@@ -2510,6 +2545,7 @@ required:
 - name
 ```
 
+
 ### Filter: modifyable
 <a name="filter-modifyable"></a>
 📌 **Description:**
@@ -2552,6 +2588,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
@@ -2609,6 +2646,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -2704,6 +2742,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: snapshots
 <a name="filter-snapshots"></a>
@@ -2802,6 +2841,7 @@ required:
 - type
 ```
 
+
 ### Filter: tag-count
 <a name="filter-tag-count"></a>
 📌 **Description:**
@@ -2869,6 +2909,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -2977,3 +3018,4 @@ enum:
 required:
 - type
 ```
+

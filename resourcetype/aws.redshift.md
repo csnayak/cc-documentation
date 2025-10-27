@@ -1,19 +1,23 @@
 ---
 Title: Aws.Redshift
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.redshift
 ---
 
-# AWS Resources Covered
-- [aws.redshift](#aws-redshift)
+# AWS.REDSHIFT
+
+AWS Resource Type: `aws.redshift`
+
 
 ## Table of Contents
-- [AWS.REDSHIFT](#aws-redshift)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.REDSHIFT
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [delete](#action-delete)
@@ -38,7 +42,7 @@ Version: 1.0
 - [tag-trim](#action-tag-trim)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [consecutive-aws-backups](#filter-consecutive-aws-backups)
 - [consecutive-snapshots](#filter-consecutive-snapshots)
@@ -60,7 +64,7 @@ Version: 1.0
 - [subnet](#filter-subnet)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -141,6 +145,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -224,6 +229,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -265,6 +271,7 @@ required:
 - type
 ```
 
+
 ### Action: enable-vpc-routing
 <a name="action-enable-vpc-routing"></a>
 📌 **Description:**
@@ -305,6 +312,7 @@ type: boolean
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -376,6 +384,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -439,6 +448,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -493,6 +503,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: modify-security-groups
 <a name="action-modify-security-groups"></a>
@@ -569,6 +580,7 @@ type:
 enum:
 - modify-security-groups
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -757,6 +769,7 @@ enum:
 - notify
 ```
 
+
 ### Action: pause
 <a name="action-pause"></a>
 📌 **Description:**
@@ -784,6 +797,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: post-finding
 <a name="action-post-finding"></a>
@@ -907,6 +921,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -994,6 +1009,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1085,6 +1101,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1126,6 +1143,7 @@ required:
 - type
 ```
 
+
 ### Action: resume
 <a name="action-resume"></a>
 📌 **Description:**
@@ -1153,6 +1171,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: retention
 <a name="action-retention"></a>
@@ -1193,6 +1212,7 @@ required:
 - type
 ```
 
+
 ### Action: set-attributes
 <a name="action-set-attributes"></a>
 📌 **Description:**
@@ -1231,6 +1251,7 @@ enum:
 required:
 - attributes
 ```
+
 
 ### Action: set-logging
 <a name="action-set-logging"></a>
@@ -1278,6 +1299,7 @@ required:
 - state
 ```
 
+
 ### Action: set-public-access
 <a name="action-set-public-access"></a>
 📌 **Description:**
@@ -1314,6 +1336,7 @@ required:
 - type
 ```
 
+
 ### Action: snapshot
 <a name="action-snapshot"></a>
 📌 **Description:**
@@ -1349,6 +1372,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: tag
 <a name="action-tag"></a>
@@ -1393,6 +1417,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: tag-trim
 <a name="action-tag-trim"></a>
@@ -1442,6 +1467,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1508,7 +1534,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1579,6 +1606,7 @@ required:
 - rules
 ```
 
+
 ### Filter: consecutive-aws-backups
 <a name="filter-consecutive-aws-backups"></a>
 📌 **Description:**
@@ -1632,6 +1660,7 @@ required:
 - type
 ```
 
+
 ### Filter: consecutive-snapshots
 <a name="filter-consecutive-snapshots"></a>
 📌 **Description:**
@@ -1684,6 +1713,7 @@ required:
 - type
 ```
 
+
 ### Filter: default-vpc
 <a name="filter-default-vpc"></a>
 📌 **Description:**
@@ -1714,6 +1744,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1823,6 +1854,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1889,6 +1921,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: kms-key
 <a name="filter-kms-key"></a>
@@ -2026,6 +2059,7 @@ required:
 - type
 ```
 
+
 ### Filter: list-item
 <a name="filter-list-item"></a>
 📌 **Description:**
@@ -2144,6 +2178,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: logging
 <a name="filter-logging"></a>
@@ -2265,6 +2300,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -2338,6 +2374,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: metrics
 <a name="filter-metrics"></a>
@@ -2458,6 +2495,7 @@ required:
 - name
 ```
 
+
 ### Filter: network-location
 <a name="filter-network-location"></a>
 📌 **Description:**
@@ -2545,6 +2583,7 @@ required:
 - type
 ```
 
+
 ### Filter: offhour
 <a name="filter-offhour"></a>
 📌 **Description:**
@@ -2623,6 +2662,7 @@ required:
 - default_tz
 - type
 ```
+
 
 ### Filter: onhour
 <a name="filter-onhour"></a>
@@ -2703,6 +2743,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -2759,6 +2800,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: param
 <a name="filter-param"></a>
@@ -2874,6 +2916,7 @@ required:
 - type
 ```
 
+
 ### Filter: reduce
 <a name="filter-reduce"></a>
 📌 **Description:**
@@ -2968,6 +3011,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: security-group
 <a name="filter-security-group"></a>
@@ -3083,6 +3127,7 @@ required:
 - type
 ```
 
+
 ### Filter: subnet
 <a name="filter-subnet"></a>
 📌 **Description:**
@@ -3110,7 +3155,7 @@ policies:
 
 <!-- It also supports finding resources on public or private subnets
 via route table introspection to determine if the subnet is
-associated to an internet gateway. -->
+associated to an internet gateway or a nat gateway. -->
 
 ```yaml
 policies:
@@ -3118,9 +3163,9 @@ policies:
    resource: aws.ec2
    filters:
      - type: subnet
+       operator: or
        igw: True
-       key: SubnetId
-       value: present
+       nat: True
 ```
 
 📌 **Schema:**
@@ -3139,6 +3184,10 @@ key:
 type: string
 match-resource:
 type: boolean
+nat:
+enum:
+- true
+- false
 op:
 enum:
 - eq
@@ -3225,6 +3274,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -3333,3 +3383,4 @@ enum:
 required:
 - type
 ```
+

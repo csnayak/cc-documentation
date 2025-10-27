@@ -1,19 +1,23 @@
 ---
 Title: Aws.Workspaces Directory
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.workspaces-directory
 ---
 
-# AWS Resources Covered
-- [aws.workspaces-directory](#aws-workspaces-directory)
+# AWS.WORKSPACES-DIRECTORY
+
+AWS Resource Type: `aws.workspaces-directory`
+
 
 ## Table of Contents
-- [AWS.WORKSPACES-DIRECTORY](#aws-workspaces-directory)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.WORKSPACES-DIRECTORY
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [deregister](#action-deregister)
@@ -30,9 +34,10 @@ Version: 1.0
 - [tag](#action-tag)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [client-properties](#filter-client-properties)
 - [connection-aliases](#filter-connection-aliases)
+- [directory](#filter-directory)
 - [event](#filter-event)
 - [finding](#filter-finding)
 - [list-item](#filter-list-item)
@@ -44,7 +49,7 @@ Version: 1.0
 - [tag-count](#filter-tag-count)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -125,6 +130,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -208,6 +214,7 @@ required:
 - type
 ```
 
+
 ### Action: deregister
 <a name="action-deregister"></a>
 📌 **Description:**
@@ -240,6 +247,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -311,6 +319,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -374,6 +383,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -428,6 +438,7 @@ required:
 - type
 ```
 
+
 ### Action: modify-client-properties
 <a name="action-modify-client-properties"></a>
 📌 **Description:**
@@ -480,6 +491,7 @@ required:
 - attributes
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -668,6 +680,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -790,6 +803,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -877,6 +891,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -968,6 +983,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1002,6 +1018,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
@@ -1054,6 +1071,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1104,6 +1122,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1170,7 +1189,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: client-properties
 <a name="filter-client-properties"></a>
@@ -1285,6 +1305,7 @@ required:
 - type
 ```
 
+
 ### Filter: connection-aliases
 <a name="filter-connection-aliases"></a>
 📌 **Description:**
@@ -1398,6 +1419,116 @@ required:
 - type
 ```
 
+
+### Filter: directory
+<a name="filter-directory"></a>
+📌 **Description:**
+
+----
+
+No help is available for this item.
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: directory
+```
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+default:
+type: object
+key:
+type: string
+op:
+enum:
+- eq
+- equal
+- ne
+- not-equal
+- gt
+- greater-than
+- ge
+- gte
+- le
+- lte
+- lt
+- less-than
+- glob
+- regex
+- regex-case
+- in
+- ni
+- not-in
+- contains
+- difference
+- intersect
+- mod
+type:
+enum:
+- directory
+value:
+oneOf:
+- type: array
+- type: string
+- type: boolean
+- type: number
+- type: 'null'
+value_from:
+additionalProperties: 'False'
+properties:
+expr:
+oneOf:
+- type: integer
+- type: string
+format:
+enum:
+- csv
+- json
+- txt
+- csv2dict
+headers:
+patternProperties:
+'':
+type: string
+type: object
+query:
+type: string
+url:
+type: string
+required:
+- url
+type: object
+value_path:
+type: string
+value_regex:
+type: string
+value_type:
+enum:
+- age
+- integer
+- expiration
+- normalize
+- size
+- cidr
+- cidr_size
+- swap
+- resource_count
+- expr
+- unique_size
+- date
+- version
+- float
+required:
+- type
+```
+
+
 ### Filter: event
 <a name="filter-event"></a>
 📌 **Description:**
@@ -1506,6 +1637,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1572,6 +1704,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1692,6 +1825,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -1766,6 +1900,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1822,6 +1957,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1917,6 +2053,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: security-group
 <a name="filter-security-group"></a>
@@ -2032,6 +2169,7 @@ required:
 - type
 ```
 
+
 ### Filter: subnet
 <a name="filter-subnet"></a>
 📌 **Description:**
@@ -2059,7 +2197,7 @@ policies:
 
 <!-- It also supports finding resources on public or private subnets
 via route table introspection to determine if the subnet is
-associated to an internet gateway. -->
+associated to an internet gateway or a nat gateway. -->
 
 ```yaml
 policies:
@@ -2067,9 +2205,9 @@ policies:
    resource: aws.ec2
    filters:
      - type: subnet
+       operator: or
        igw: True
-       key: SubnetId
-       value: present
+       nat: True
 ```
 
 📌 **Schema:**
@@ -2088,6 +2226,10 @@ key:
 type: string
 match-resource:
 type: boolean
+nat:
+enum:
+- true
+- false
 op:
 enum:
 - eq
@@ -2175,6 +2317,7 @@ required:
 - type
 ```
 
+
 ### Filter: tag-count
 <a name="filter-tag-count"></a>
 📌 **Description:**
@@ -2242,6 +2385,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -2350,3 +2494,4 @@ enum:
 required:
 - type
 ```
+

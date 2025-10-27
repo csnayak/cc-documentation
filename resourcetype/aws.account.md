@@ -1,19 +1,23 @@
 ---
 Title: Aws.Account
 Category: Cloud Custodian
-Last Updated: 2025-03-21
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.account
 ---
 
-# AWS Resources Covered
-- [aws.account](#aws-account)
+# AWS.ACCOUNT
+
+AWS Resource Type: `aws.account`
+
 
 ## Table of Contents
-- [AWS.ACCOUNT](#aws-account)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.ACCOUNT
-
-### Available Actions
+## Available Actions
 - [enable-cloudtrail](#action-enable-cloudtrail)
 - [enable-data-events](#action-enable-data-events)
 - [invoke-lambda](#action-invoke-lambda)
@@ -29,12 +33,13 @@ Version: 1.0
 - [set-emr-block-public-access](#action-set-emr-block-public-access)
 - [set-password-policy](#action-set-password-policy)
 - [set-s3-public-block](#action-set-s3-public-block)
+- [set-security-token-service-preferences](#action-set-security-token-service-preferences)
 - [set-shield-advanced](#action-set-shield-advanced)
 - [set-xray-encrypt](#action-set-xray-encrypt)
 - [toggle-config-managed-rule](#action-toggle-config-managed-rule)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [access-analyzer](#filter-access-analyzer)
 - [bedrock-model-invocation-logging](#filter-bedrock-model-invocation-logging)
 - [check-cloudtrail](#filter-check-cloudtrail)
@@ -67,7 +72,7 @@ Version: 1.0
 - [value](#filter-value)
 - [xray-encrypt-key](#filter-xray-encrypt-key)
 
-### Action Details
+## Action Details
 
 ### Action: enable-cloudtrail
 <a name="action-enable-cloudtrail"></a>
@@ -122,6 +127,7 @@ enum:
 required:
 - bucket
 ```
+
 
 ### Action: enable-data-events
 <a name="action-enable-data-events"></a>
@@ -196,6 +202,7 @@ required:
 - type
 ```
 
+
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
 📌 **Description:**
@@ -266,6 +273,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -328,6 +336,7 @@ required:
 - state-machine
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -516,6 +525,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -638,6 +648,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -725,6 +736,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -816,6 +828,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: request-limit-increase
 <a name="action-request-limit-increase"></a>
 📌 **Description:**
@@ -889,6 +902,7 @@ enum:
 - request-limit-increase
 ```
 
+
 ### Action: set-bedrock-model-invocation-logging
 <a name="action-set-bedrock-model-invocation-logging"></a>
 📌 **Description:**
@@ -937,6 +951,7 @@ enum:
 - set-bedrock-model-invocation-logging
 ```
 
+
 ### Action: set-ebs-encryption
 <a name="action-set-ebs-encryption"></a>
 📌 **Description:**
@@ -976,6 +991,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-ec2-metadata-defaults
 <a name="action-set-ec2-metadata-defaults"></a>
@@ -1034,6 +1050,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-emr-block-public-access
 <a name="action-set-emr-block-public-access"></a>
@@ -1098,6 +1115,7 @@ required:
 - config
 ```
 
+
 ### Action: set-password-policy
 <a name="action-set-password-policy"></a>
 📌 **Description:**
@@ -1142,6 +1160,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-s3-public-block
 <a name="action-set-s3-public-block"></a>
@@ -1198,6 +1217,41 @@ required:
 - type
 ```
 
+
+### Action: set-security-token-service-preferences
+<a name="action-set-security-token-service-preferences"></a>
+📌 **Description:**
+
+----
+
+Action to set STS preferences.
+
+📌 **Example Usage:**
+
+```yaml
+actions:
+  - type: set-security-token-service-preferences
+```
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+token_version:
+enum:
+- v1Token
+- v2Token
+type: string
+type:
+enum:
+- set-security-token-service-preferences
+required:
+- type
+```
+
+
 ### Action: set-shield-advanced
 <a name="action-set-shield-advanced"></a>
 📌 **Description:**
@@ -1227,6 +1281,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-xray-encrypt
 <a name="action-set-xray-encrypt"></a>
@@ -1267,6 +1322,7 @@ required:
 - key
 - type
 ```
+
 
 ### Action: toggle-config-managed-rule
 <a name="action-toggle-config-managed-rule"></a>
@@ -1384,6 +1440,7 @@ required:
 - type
 ```
 
+
 ### Action: webhook
 <a name="action-webhook"></a>
 📌 **Description:**
@@ -1449,7 +1506,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: access-analyzer
 <a name="filter-access-analyzer"></a>
@@ -1565,6 +1623,7 @@ required:
 - type
 ```
 
+
 ### Filter: bedrock-model-invocation-logging
 <a name="filter-bedrock-model-invocation-logging"></a>
 📌 **Description:**
@@ -1660,6 +1719,7 @@ required:
 - type
 ```
 
+
 ### Filter: check-cloudtrail
 <a name="filter-check-cloudtrail"></a>
 📌 **Description:**
@@ -1743,6 +1803,7 @@ required:
 - type
 ```
 
+
 ### Filter: check-config
 <a name="filter-check-config"></a>
 📌 **Description:**
@@ -1784,6 +1845,7 @@ required:
 - type
 ```
 
+
 ### Filter: check-macie
 <a name="filter-check-macie"></a>
 📌 **Description:**
@@ -1793,7 +1855,7 @@ required:
 Check status of macie v2 in the account.
 
 Gets the macie session info for the account, and
-the macie master account for the current account if
+the macie adminstrator account for the current account if
 configured.
 
 📌 **Example Usage:**
@@ -1896,6 +1958,7 @@ required:
 - type
 ```
 
+
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
 📌 **Description:**
@@ -1964,6 +2027,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: credential
 <a name="filter-credential"></a>
@@ -2103,6 +2167,7 @@ required:
 - type
 ```
 
+
 ### Filter: default-ebs-encryption
 <a name="filter-default-ebs-encryption"></a>
 📌 **Description:**
@@ -2158,6 +2223,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: ec2-metadata-defaults
 <a name="filter-ec2-metadata-defaults"></a>
@@ -2278,6 +2344,7 @@ required:
 - type
 ```
 
+
 ### Filter: emr-block-public-access
 <a name="filter-emr-block-public-access"></a>
 📌 **Description:**
@@ -2389,6 +2456,7 @@ required:
 - type
 ```
 
+
 ### Filter: event
 <a name="filter-event"></a>
 📌 **Description:**
@@ -2497,6 +2565,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -2564,6 +2633,7 @@ required:
 - type
 ```
 
+
 ### Filter: glue-security-config
 <a name="filter-glue-security-config"></a>
 📌 **Description:**
@@ -2603,6 +2673,7 @@ type:
 enum:
 - glue-security-config
 ```
+
 
 ### Filter: guard-duty
 <a name="filter-guard-duty"></a>
@@ -2654,6 +2725,7 @@ enum:
 - guard-duty
 ```
 
+
 ### Filter: has-virtual-mfa
 <a name="filter-has-virtual-mfa"></a>
 📌 **Description:**
@@ -2688,6 +2760,7 @@ type: boolean
 required:
 - type
 ```
+
 
 ### Filter: iam-summary
 <a name="filter-iam-summary"></a>
@@ -2846,6 +2919,7 @@ required:
 - type
 ```
 
+
 ### Filter: lakeformation-s3-cross-account
 <a name="filter-lakeformation-s3-cross-account"></a>
 📌 **Description:**
@@ -2956,6 +3030,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -3076,6 +3151,7 @@ required:
 - type
 ```
 
+
 ### Filter: missing
 <a name="filter-missing"></a>
 📌 **Description:**
@@ -3126,6 +3202,7 @@ required:
 - policy
 - type
 ```
+
 
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
@@ -3183,6 +3260,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: organization
 <a name="filter-organization"></a>
@@ -3312,6 +3390,7 @@ required:
 - type
 ```
 
+
 ### Filter: password-policy
 <a name="filter-password-policy"></a>
 📌 **Description:**
@@ -3434,6 +3513,7 @@ required:
 - type
 ```
 
+
 ### Filter: reduce
 <a name="filter-reduce"></a>
 📌 **Description:**
@@ -3528,6 +3608,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: s3-public-block
 <a name="filter-s3-public-block"></a>
@@ -3639,6 +3720,7 @@ required:
 - type
 ```
 
+
 ### Filter: securityhub
 <a name="filter-securityhub"></a>
 📌 **Description:**
@@ -3672,6 +3754,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: service-limit
 <a name="filter-service-limit"></a>
@@ -3807,6 +3890,7 @@ required:
 - type
 ```
 
+
 ### Filter: ses-agg-send-stats
 <a name="filter-ses-agg-send-stats"></a>
 📌 **Description:**
@@ -3919,6 +4003,7 @@ required:
 - type
 ```
 
+
 ### Filter: ses-send-stats
 <a name="filter-ses-send-stats"></a>
 📌 **Description:**
@@ -3964,6 +4049,7 @@ required:
 - type
 ```
 
+
 ### Filter: shield-enabled
 <a name="filter-shield-enabled"></a>
 📌 **Description:**
@@ -3993,6 +4079,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -4102,6 +4189,7 @@ required:
 - type
 ```
 
+
 ### Filter: xray-encrypt-key
 <a name="filter-xray-encrypt-key"></a>
 📌 **Description:**
@@ -4146,3 +4234,4 @@ required:
 - key
 - type
 ```
+

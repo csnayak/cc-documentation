@@ -1,19 +1,23 @@
 ---
 Title: Aws.Opswork Cm
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.opswork-cm
 ---
 
-# AWS Resources Covered
-- [aws.opswork-cm](#aws-opswork-cm)
+# AWS.OPSWORK-CM
+
+AWS Resource Type: `aws.opswork-cm`
+
 
 ## Table of Contents
-- [AWS.OPSWORK-CM](#aws-opswork-cm)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.OPSWORK-CM
-
-### Available Actions
+## Available Actions
 - [delete](#action-delete)
 - [invoke-lambda](#action-invoke-lambda)
 - [invoke-sfn](#action-invoke-sfn)
@@ -23,7 +27,7 @@ Version: 1.0
 - [put-metric](#action-put-metric)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [event](#filter-event)
 - [finding](#filter-finding)
@@ -32,7 +36,7 @@ Version: 1.0
 - [reduce](#filter-reduce)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: delete
 <a name="action-delete"></a>
@@ -66,6 +70,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -137,6 +142,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -199,6 +205,7 @@ required:
 - state-machine
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -387,6 +394,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -509,6 +517,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -596,6 +605,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -687,6 +697,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: webhook
 <a name="action-webhook"></a>
 📌 **Description:**
@@ -752,7 +763,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -822,6 +834,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -931,6 +944,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -997,6 +1011,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1117,6 +1132,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1173,6 +1189,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1268,6 +1285,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -1376,3 +1394,4 @@ enum:
 required:
 - type
 ```
+

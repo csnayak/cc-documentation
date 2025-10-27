@@ -1,19 +1,23 @@
 ---
 Title: Aws.Fsx
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.fsx
 ---
 
-# AWS Resources Covered
-- [aws.fsx](#aws-fsx)
+# AWS.FSX
+
+AWS Resource Type: `aws.fsx`
+
 
 ## Table of Contents
-- [AWS.FSX](#aws-fsx)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.FSX
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [backup](#action-backup)
 - [copy-related-tag](#action-copy-related-tag)
@@ -30,7 +34,7 @@ Version: 1.0
 - [update](#action-update)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [consecutive-aws-backups](#filter-consecutive-aws-backups)
 - [consecutive-backups](#filter-consecutive-backups)
@@ -39,12 +43,15 @@ Version: 1.0
 - [kms-key](#filter-kms-key)
 - [list-item](#filter-list-item)
 - [marked-for-op](#filter-marked-for-op)
+- [metrics](#filter-metrics)
 - [ops-item](#filter-ops-item)
 - [reduce](#filter-reduce)
 - [subnet](#filter-subnet)
 - [value](#filter-value)
+- [volume](#filter-volume)
+- [vpc](#filter-vpc)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -126,6 +133,7 @@ required:
 - type
 ```
 
+
 ### Action: backup
 <a name="action-backup"></a>
 📌 **Description:**
@@ -186,6 +194,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -269,6 +278,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -324,6 +334,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -395,6 +406,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -458,6 +470,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -518,6 +531,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -706,6 +720,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -828,6 +843,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -915,6 +931,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1006,6 +1023,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1040,6 +1058,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: tag
 <a name="action-tag"></a>
@@ -1077,6 +1096,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: update
 <a name="action-update"></a>
@@ -1120,6 +1140,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1186,7 +1207,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1257,6 +1279,7 @@ required:
 - rules
 ```
 
+
 ### Filter: consecutive-aws-backups
 <a name="filter-consecutive-aws-backups"></a>
 📌 **Description:**
@@ -1310,6 +1333,7 @@ required:
 - type
 ```
 
+
 ### Filter: consecutive-backups
 <a name="filter-consecutive-backups"></a>
 📌 **Description:**
@@ -1348,6 +1372,7 @@ required:
 - days
 - type
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1457,6 +1482,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1523,6 +1549,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: kms-key
 <a name="filter-kms-key"></a>
@@ -1660,6 +1687,7 @@ required:
 - type
 ```
 
+
 ### Filter: list-item
 <a name="filter-list-item"></a>
 📌 **Description:**
@@ -1779,6 +1807,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -1853,6 +1882,127 @@ required:
 - type
 ```
 
+
+### Filter: metrics
+<a name="filter-metrics"></a>
+📌 **Description:**
+
+----
+
+Supports cloud watch metrics filters on resources.
+
+All resources that have cloud watch metrics are supported.
+
+Docs on cloud watch metrics
+
+- GetMetricStatistics
+  https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html
+
+- Supported Metrics
+  https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html
+
+📌 **Example Usage:**
+
+<!-- - name: ec2-underutilized
+resource: ec2
+filters:
+  - type: metrics
+    name: CPUUtilization
+    days: 4
+    period: 86400
+    value: 30
+    op: less-than -->
+
+<!-- Note periods when a resource is not sending metrics are not part
+of calculated statistics as in the case of a stopped ec2 instance,
+nor for resources to new to have existed the entire
+period. ie. being stopped for an ec2 instance wouldn't lower the
+average cpu utilization. -->
+
+<!-- The "missing-value" key allows a policy to specify a default
+value when CloudWatch has no data to report: -->
+
+<!-- - name: elb-low-request-count
+resource: elb
+filters:
+  - type: metrics
+    name: RequestCount
+    statistics: Sum
+    days: 7
+    value: 7
+    missing-value: 0
+    op: less-than -->
+
+<!-- This policy matches any ELB with fewer than 7 requests for the past week.
+ELBs with no requests during that time will have an empty set of metrics.
+Rather than skipping those resources, "missing-value: 0" causes the
+policy to treat their request counts as 0. -->
+
+<!-- Note the default statistic for metrics is Average. -->
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+attr-multiplier:
+type: number
+days:
+type: number
+dimensions:
+patternProperties:
+^.*$:
+type: string
+type: object
+missing-value:
+type: number
+name:
+type: string
+namespace:
+type: string
+op:
+enum:
+- eq
+- equal
+- ne
+- not-equal
+- gt
+- greater-than
+- ge
+- gte
+- le
+- lte
+- lt
+- less-than
+- glob
+- regex
+- regex-case
+- in
+- ni
+- not-in
+- contains
+- difference
+- intersect
+- mod
+type: string
+percent-attr:
+type: string
+period:
+type: number
+statistics:
+type: string
+type:
+enum:
+- metrics
+value:
+type: number
+required:
+- value
+- name
+```
+
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1909,6 +2059,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -2005,6 +2156,7 @@ required:
 - type
 ```
 
+
 ### Filter: subnet
 <a name="filter-subnet"></a>
 📌 **Description:**
@@ -2032,7 +2184,7 @@ policies:
 
 <!-- It also supports finding resources on public or private subnets
 via route table introspection to determine if the subnet is
-associated to an internet gateway. -->
+associated to an internet gateway or a nat gateway. -->
 
 ```yaml
 policies:
@@ -2040,9 +2192,9 @@ policies:
    resource: aws.ec2
    filters:
      - type: subnet
+       operator: or
        igw: True
-       key: SubnetId
-       value: present
+       nat: True
 ```
 
 📌 **Schema:**
@@ -2061,6 +2213,10 @@ key:
 type: string
 match-resource:
 type: boolean
+nat:
+enum:
+- true
+- false
 op:
 enum:
 - eq
@@ -2147,6 +2303,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -2255,3 +2412,237 @@ enum:
 required:
 - type
 ```
+
+
+### Filter: volume
+<a name="filter-volume"></a>
+📌 **Description:**
+
+----
+
+Perform multi attribute filtering on items within a list,
+for example looking for security groups that have rules which
+include 0.0.0.0/0 and port 22 open.
+
+📌 **Example Usage:**
+
+```yaml
+policies:
+  - name: security-group-with-22-open-to-world
+    resource: aws.security-group
+    filters:
+      - type: list-item
+        key: IpPermissions
+        attrs:
+          - type: value
+            key: IpRanges[].CidrIp
+            value: '0.0.0.0/0'
+            op: in
+            value_type: swap
+          - type: value
+            key: FromPort
+            value: 22
+          - type: value
+            key: ToPort
+            value: 22
+  - name: find-task-def-not-using-registry
+    resource: aws.ecs-task-definition
+    filters:
+      - not:
+        - type: list-item
+          key: containerDefinitions
+          attrs:
+            - not:
+              - type: value
+                key: image
+                value: "${account_id}.dkr.ecr.us-east-2.amazonaws.com.*"
+                op: regex
+```
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+attrs:
+items:
+anyOf:
+- $ref: '#/definitions/filters/value'
+- $ref: '#/definitions/filters/valuekv'
+- additional_properties: false
+properties:
+and:
+items:
+anyOf:
+- $ref: '#/definitions/filters/value'
+- $ref: '#/definitions/filters/valuekv'
+type: array
+type: object
+- additional_properties: false
+properties:
+or:
+items:
+anyOf:
+- $ref: '#/definitions/filters/value'
+- $ref: '#/definitions/filters/valuekv'
+type: array
+type: object
+- additional_properties: false
+properties:
+not:
+items:
+anyOf:
+- $ref: '#/definitions/filters/value'
+- $ref: '#/definitions/filters/valuekv'
+type: array
+type: object
+type: array
+count:
+type: number
+count_op:
+enum:
+- eq
+- equal
+- ne
+- not-equal
+- gt
+- greater-than
+- ge
+- gte
+- le
+- lte
+- lt
+- less-than
+- glob
+- regex
+- regex-case
+- in
+- ni
+- not-in
+- contains
+- difference
+- intersect
+- mod
+type:
+enum:
+- volume
+required:
+- type
+```
+
+
+### Filter: vpc
+<a name="filter-vpc"></a>
+📌 **Description:**
+
+----
+
+Filter a resource by its associated vpc.
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: vpc
+```
+
+📌 **Schema:**
+
+```yaml
+------
+
+properties:
+default:
+type: object
+key:
+type: string
+match-resource:
+type: boolean
+op:
+enum:
+- eq
+- equal
+- ne
+- not-equal
+- gt
+- greater-than
+- ge
+- gte
+- le
+- lte
+- lt
+- less-than
+- glob
+- regex
+- regex-case
+- in
+- ni
+- not-in
+- contains
+- difference
+- intersect
+- mod
+operator:
+enum:
+- and
+- or
+type:
+enum:
+- vpc
+value:
+oneOf:
+- type: array
+- type: string
+- type: boolean
+- type: number
+- type: 'null'
+value_from:
+additionalProperties: 'False'
+properties:
+expr:
+oneOf:
+- type: integer
+- type: string
+format:
+enum:
+- csv
+- json
+- txt
+- csv2dict
+headers:
+patternProperties:
+'':
+type: string
+type: object
+query:
+type: string
+url:
+type: string
+required:
+- url
+type: object
+value_path:
+type: string
+value_regex:
+type: string
+value_type:
+enum:
+- age
+- integer
+- expiration
+- normalize
+- size
+- cidr
+- cidr_size
+- swap
+- resource_count
+- expr
+- unique_size
+- date
+- version
+- float
+required:
+- type
+```
+

@@ -1,243 +1,40 @@
 ---
-Title: Aws.Log Destination
+Title: Aws.Quicksight Dashboard
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.quicksight-dashboard
 ---
 
-# AWS Resources Covered
-- [aws.log-destination](#aws-log-destination)
+# AWS.QUICKSIGHT-DASHBOARD
+
+AWS Resource Type: `aws.quicksight-dashboard`
+
 
 ## Table of Contents
-- [AWS.LOG-DESTINATION](#aws-log-destination)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.LOG-DESTINATION
-
-### Available Actions
-- [auto-tag-user](#action-auto-tag-user)
-- [copy-related-tag](#action-copy-related-tag)
-- [delete](#action-delete)
+## Available Actions
 - [invoke-lambda](#action-invoke-lambda)
 - [invoke-sfn](#action-invoke-sfn)
-- [mark-for-op](#action-mark-for-op)
 - [notify](#action-notify)
 - [post-finding](#action-post-finding)
 - [post-item](#action-post-item)
 - [put-metric](#action-put-metric)
-- [remove-tag](#action-remove-tag)
-- [rename-tag](#action-rename-tag)
-- [tag](#action-tag)
 - [webhook](#action-webhook)
 
-### Available Filters
-- [config-compliance](#filter-config-compliance)
-- [cross-account](#filter-cross-account)
+## Available Filters
 - [event](#filter-event)
 - [finding](#filter-finding)
 - [list-item](#filter-list-item)
-- [marked-for-op](#filter-marked-for-op)
 - [ops-item](#filter-ops-item)
 - [reduce](#filter-reduce)
 - [value](#filter-value)
 
-### Action Details
-
-### Action: auto-tag-user
-<a name="action-auto-tag-user"></a>
-📌 **Description:**
-
-----
-
-Tag a resource with the user who created/modified it.
-
-📌 **Example Usage:**
-
-```yaml
-policies:
-- name: ec2-auto-tag-ownercontact
-  resource: ec2
-  description: |
-    Triggered when a new EC2 Instance is launched. Checks to see if
-    it's missing the OwnerContact tag. If missing it gets created
-    with the value of the ID of whomever called the RunInstances API
-  mode:
-    type: cloudtrail
-    role: arn:aws:iam::123456789000:role/custodian-auto-tagger
-    events:
-      - RunInstances
-  filters:
-   - tag:OwnerContact: absent
-  actions:
-   - type: auto-tag-user
-     tag: OwnerContact
-```
-
-<!-- There's a number of caveats to usage. Resources which don't
-include tagging as part of their api may have some delay before
-automation kicks in to create a tag. Real world delay may be several
-minutes, with worst case into hours[0]. This creates a race condition
-between auto tagging and automation. -->
-
-<!-- In practice this window is on the order of a fraction of a second, as
-we fetch the resource and evaluate the presence of the tag before
-attempting to tag it. -->
-
-<!-- References -->
-
-<!-- CloudTrail User
- https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html -->
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-principal_id_tag:
-type: string
-tag:
-type: string
-type:
-enum:
-- auto-tag-user
-update:
-type: boolean
-user-type:
-items:
-enum:
-- IAMUser
-- AssumedRole
-- FederatedUser
-type: string
-type: array
-value:
-enum:
-- userName
-- arn
-- sourceIPAddress
-- principalId
-type: string
-required:
-- tag
-- type
-```
-
-### Action: copy-related-tag
-<a name="action-copy-related-tag"></a>
-📌 **Description:**
-
-----
-
-Copy a related resource tag to its associated resource
-
-In some scenarios, resource tags from a related resource should be applied
-to its child resource. For example, EBS Volume tags propogating to their
-snapshots. To use this action, specify the resource type that contains the
-tags that are to be copied, which can be found by using the
-`custodian schema` command.
-
-Then, specify the key on the resource that references the related resource.
-In the case of ebs-snapshot, the VolumeId attribute would be the key that
-identifies the related resource, ebs.
-
-Finally, specify a list of tag keys to copy from the related resource onto
-the original resource. The special character "*" can be used to signify that
-all tags from the related resource should be copied to the original resource.
-
-To raise an error when related resources cannot be found, use the
-`skip_missing` option. By default, this is set to True.
-
-📌 **Example Usage:**
-
-```yaml
-policies:
-        - name: copy-tags-from-ebs-volume-to-snapshot
-          resource: ebs-snapshot
-          actions:
-            - type: copy-related-tag
-              resource: ebs
-              skip_missing: True
-              key: VolumeId
-              tags: '*'
-```
-
-<!-- In the event that the resource type is not supported in Cloud Custodian but
-is supported in the resources groups tagging api, use the resourcegroupstaggingapi
-resource type to reference the resource. The value should be an ARN for the
-related resource. -->
-
-```yaml
-policies:
-        - name: copy-tags-from-unsupported-resource
-          resource: ebs-snapshot
-          actions:
-            - type: copy-related-tag
-              resource: resourcegroupstaggingapi
-              key: tag:a-resource-tag
-              tags: '*'
-```
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-key:
-type: string
-resource:
-type: string
-skip_missing:
-type: boolean
-tags:
-oneOf:
-- enum:
-- '*'
-- type: array
-type:
-enum:
-- copy-related-tag
-required:
-- tags
-- key
-- resource
-- type
-```
-
-### Action: delete
-<a name="action-delete"></a>
-📌 **Description:**
-
-----
-
-Action to delete a delivery destination
-
-📌 **Example Usage:**
-
-```yaml
-policies:
-  - name: delete-destination
-    resource: aws.log-destination
-    filters:
-      - type: value
-        key: deliveryDestinationType
-        value: S3
-    actions:
-      - delete
-```
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-type:
-enum:
-- delete
-required:
-- type
-```
+## Action Details
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -309,6 +106,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -372,59 +170,6 @@ required:
 - type
 ```
 
-### Action: mark-for-op
-<a name="action-mark-for-op"></a>
-📌 **Description:**
-
-----
-
-Tag resources for future action.
-
-📌 **Example Usage:**
-
-<!-- .. code-block :: yaml -->
-
-```yaml
-policies:
-    - name: ec2-mark-stop
-      resource: ec2
-      filters:
-        - type: image-age
-          op: ge
-          days: 90
-      actions:
-        - type: mark-for-op
-          tag: custodian_cleanup
-          op: terminate
-          days: 4
-```
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-days:
-minimum: 0
-type: number
-hours:
-minimum: 0
-type: number
-msg:
-type: string
-op:
-type: string
-tag:
-type: string
-type:
-enum:
-- mark-for-op
-tz:
-type: string
-required:
-- type
-```
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -613,6 +358,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -735,6 +481,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -822,6 +569,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -913,142 +661,6 @@ required:
 - metric_name
 ```
 
-### Action: remove-tag
-<a name="action-remove-tag"></a>
-📌 **Description:**
-
-----
-
-Removes the specified tags from the specified resources.
-
-📌 **Example Usage:**
-
-```yaml
-actions:
-  - type: remove-tag
-```
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-tags:
-items:
-type: string
-type: array
-type:
-enum:
-- remove-tag
-- unmark
-- untag
-- remove-tag
-required:
-- type
-```
-
-### Action: rename-tag
-<a name="action-rename-tag"></a>
-📌 **Description:**
-
-----
-
-Rename an existing tag key to a new value.
-
-📌 **Example Usage:**
-
-<!-- rename Application, and Bap to App, if a resource has both of the old keys
-then we'll use the value specified by Application, which is based on the
-order of values of old_keys. -->
-
-<!-- .. code-block :: yaml -->
-
-```yaml
-policies:
-    - name: rename-tags-example
-      resource: aws.log-group
-      filters:
-        - or:
-          - "tag:Bap": present
-          - "tag:Application": present
-      actions:
-        - type: rename-tag
-          old_keys: [Application, Bap]
-          new_key: App
-```
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-new_key:
-type: string
-old_key:
-type: string
-old_keys:
-items:
-type: string
-type: array
-type:
-enum:
-- rename-tag
-required:
-- type
-```
-
-### Action: tag
-<a name="action-tag"></a>
-📌 **Description:**
-
-----
-
-Applies one or more tags to the specified resources.
-
-📌 **Example Usage:**
-
-<!-- .. code-block :: yaml -->
-
-```yaml
-policies:
-    - name: multiple-tags-example
-      comment: |
-        Tags any secrets missing either the Environment or ResourceOwner tag
-      resource: aws.secrets-manager
-      filters:
-        - or:
-          - "tag:Environment": absent
-          - "tag:ResourceOwner": absent
-      actions:
-        - type: tag
-          tags:
-            Environment: Staging
-            ResourceOwner: Avengers
-```
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-key:
-type: string
-tag:
-type: string
-tags:
-type: object
-type:
-enum:
-- tag
-- mark
-value:
-type: string
-required:
-- type
-```
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1115,230 +727,8 @@ required:
 - type
 ```
 
-### Filter Details
 
-### Filter: config-compliance
-<a name="filter-config-compliance"></a>
-📌 **Description:**
-
-----
-
-Filter resources by their compliance with one or more AWS config rules.
-
-An example of using the filter to find all ec2 instances that have
-been registered as non compliant in the last 30 days against two
-custom AWS Config rules.
-
-📌 **Example Usage:**
-
-```yaml
-policies:
- - name: non-compliant-ec2
-   resource: ec2
-   filters:
-    - type: config-compliance
-      eval_filters:
-       - type: value
-         key: ResultRecordedTime
-         value_type: age
-         value: 30
-         op: less-than
-      rules:
-       - custodian-ec2-encryption-required
-       - custodian-ec2-tags-required
-```
-
-<!-- Also note, custodian has direct support for deploying policies as config
-rules see https://cloudcustodian.io/docs/policy/lambda.html#config-rules -->
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-eval_filters:
-items:
-oneOf:
-- $ref: '#/definitions/filters/valuekv'
-- $ref: '#/definitions/filters/value'
-type: array
-op:
-enum:
-- or
-- and
-rules:
-items:
-type: string
-type: array
-states:
-items:
-enum:
-- COMPLIANT
-- NON_COMPLIANT
-- NOT_APPLICABLE
-- INSUFFICIENT_DATA
-type: array
-type:
-enum:
-- config-compliance
-required:
-- rules
-```
-
-### Filter: cross-account
-<a name="filter-cross-account"></a>
-📌 **Description:**
-
-----
-
-Check a resource's embedded iam policy for cross account access.
-
-📌 **Example Usage:**
-
-```yaml
-filters:
-  - type: cross-account
-```
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-actions:
-items:
-type: string
-type: array
-everyone_only:
-type: boolean
-type:
-enum:
-- cross-account
-whitelist:
-items:
-type: string
-type: array
-whitelist_conditions:
-items:
-type: string
-type: array
-whitelist_from:
-additionalProperties: 'False'
-properties:
-expr:
-oneOf:
-- type: integer
-- type: string
-format:
-enum:
-- csv
-- json
-- txt
-- csv2dict
-headers:
-patternProperties:
-'':
-type: string
-type: object
-query:
-type: string
-url:
-type: string
-required:
-- url
-type: object
-whitelist_orgids:
-items:
-type: string
-type: array
-whitelist_orgids_from:
-additionalProperties: 'False'
-properties:
-expr:
-oneOf:
-- type: integer
-- type: string
-format:
-enum:
-- csv
-- json
-- txt
-- csv2dict
-headers:
-patternProperties:
-'':
-type: string
-type: object
-query:
-type: string
-url:
-type: string
-required:
-- url
-type: object
-whitelist_vpc:
-items:
-type: string
-type: array
-whitelist_vpc_from:
-additionalProperties: 'False'
-properties:
-expr:
-oneOf:
-- type: integer
-- type: string
-format:
-enum:
-- csv
-- json
-- txt
-- csv2dict
-headers:
-patternProperties:
-'':
-type: string
-type: object
-query:
-type: string
-url:
-type: string
-required:
-- url
-type: object
-whitelist_vpce:
-items:
-type: string
-type: array
-whitelist_vpce_from:
-additionalProperties: 'False'
-properties:
-expr:
-oneOf:
-- type: integer
-- type: string
-format:
-enum:
-- csv
-- json
-- txt
-- csv2dict
-headers:
-patternProperties:
-'':
-type: string
-type: object
-query:
-type: string
-url:
-type: string
-required:
-- url
-type: object
-required:
-- type
-```
+## Filter Details
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1448,6 +838,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1514,6 +905,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1634,79 +1026,6 @@ required:
 - type
 ```
 
-### Filter: marked-for-op
-<a name="filter-marked-for-op"></a>
-📌 **Description:**
-
-----
-
-Filter resources for tag specified future action
-
-Filters resources by a 'maid_status' tag which specifies a future
-date for an action.
-
-The filter parses the tag values looking for an 'op@date'
-string. The date is parsed and compared to do today's date, the
-filter succeeds if today's date is gte to the target date.
-
-The optional 'skew' parameter provides for incrementing today's
-date a number of days into the future. An example use case might
-be sending a final notice email a few days before terminating an
-instance, or snapshotting a volume prior to deletion.
-
-The optional 'skew_hours' parameter provides for incrementing the current
-time a number of hours into the future.
-
-Optionally, the 'tz' parameter can get used to specify the timezone
-in which to interpret the clock (default value is 'utc')
-
-.. code-block :: yaml
-
-  policies:
-    - name: ec2-stop-marked
-      resource: ec2
-      filters:
-        - type: marked-for-op
-          # The default tag used is maid_status
-          # but that is configurable
-          tag: custodian_status
-          op: stop
-          # Another optional tag is skew
-          tz: utc
-      actions:
-        - type: stop
-
-📌 **Example Usage:**
-
-```yaml
-filters:
-  - type: marked-for-op
-```
-
-📌 **Schema:**
-
-```yaml
-------
-
-properties:
-op:
-type: string
-skew:
-minimum: 0
-type: number
-skew_hours:
-minimum: 0
-type: number
-tag:
-type: string
-type:
-enum:
-- marked-for-op
-tz:
-type: string
-required:
-- type
-```
 
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
@@ -1764,6 +1083,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1859,6 +1179,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -1967,3 +1288,4 @@ enum:
 required:
 - type
 ```
+

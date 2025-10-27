@@ -1,19 +1,23 @@
 ---
 Title: Aws.Rest Resource
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.rest-resource
 ---
 
-# AWS Resources Covered
-- [aws.rest-resource](#aws-rest-resource)
+# AWS.REST-RESOURCE
+
+AWS Resource Type: `aws.rest-resource`
+
 
 ## Table of Contents
-- [AWS.REST-RESOURCE](#aws-rest-resource)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.REST-RESOURCE
-
-### Available Actions
+## Available Actions
 - [delete-integration](#action-delete-integration)
 - [invoke-lambda](#action-invoke-lambda)
 - [invoke-sfn](#action-invoke-sfn)
@@ -25,7 +29,7 @@ Version: 1.0
 - [update-method](#action-update-method)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [event](#filter-event)
 - [list-item](#filter-list-item)
@@ -35,7 +39,7 @@ Version: 1.0
 - [rest-method](#filter-rest-method)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: delete-integration
 <a name="action-delete-integration"></a>
@@ -71,6 +75,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -142,6 +147,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -204,6 +210,7 @@ required:
 - state-machine
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -392,6 +399,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -514,6 +522,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -601,6 +610,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -692,6 +702,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: update-integration
 <a name="action-update-integration"></a>
 📌 **Description:**
@@ -754,6 +765,7 @@ required:
 - patch
 - type
 ```
+
 
 ### Action: update-method
 <a name="action-update-method"></a>
@@ -818,6 +830,7 @@ required:
 - patch
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -884,7 +897,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -954,6 +968,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1062,6 +1077,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1182,6 +1198,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1238,6 +1255,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1333,6 +1351,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: rest-integration
 <a name="filter-rest-integration"></a>
@@ -1459,6 +1478,7 @@ required:
 - type
 ```
 
+
 ### Filter: rest-method
 <a name="filter-rest-method"></a>
 📌 **Description:**
@@ -1584,6 +1604,7 @@ required:
 - type
 ```
 
+
 ### Filter: value
 <a name="filter-value"></a>
 📌 **Description:**
@@ -1691,3 +1712,4 @@ enum:
 required:
 - type
 ```
+

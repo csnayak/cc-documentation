@@ -1,19 +1,23 @@
 ---
 Title: Aws.Ec2
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.ec2
 ---
 
-# AWS Resources Covered
-- [aws.ec2](#aws-ec2)
+# AWS.EC2
+
+AWS Resource Type: `aws.ec2`
+
 
 ## Table of Contents
-- [AWS.EC2](#aws-ec2)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.EC2
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [autorecover-alarm](#action-autorecover-alarm)
 - [copy-related-tag](#action-copy-related-tag)
@@ -43,7 +47,7 @@ Version: 1.0
 - [terminate](#action-terminate)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [check-permissions](#filter-check-permissions)
 - [config-compliance](#filter-config-compliance)
 - [cost-optimization](#filter-cost-optimization)
@@ -81,7 +85,7 @@ Version: 1.0
 - [value](#filter-value)
 - [vpc](#filter-vpc)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -163,6 +167,7 @@ required:
 - type
 ```
 
+
 ### Action: autorecover-alarm
 <a name="action-autorecover-alarm"></a>
 📌 **Description:**
@@ -202,6 +207,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -285,6 +291,7 @@ required:
 - type
 ```
 
+
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
 📌 **Description:**
@@ -355,6 +362,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -418,6 +426,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -478,6 +487,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: modify-security-groups
 <a name="action-modify-security-groups"></a>
@@ -555,6 +565,7 @@ enum:
 - modify-security-groups
 ```
 
+
 ### Action: normalize-tag
 <a name="action-normalize-tag"></a>
 📌 **Description:**
@@ -627,6 +638,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -815,6 +827,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -937,6 +950,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -1025,6 +1039,7 @@ required:
 - type
 ```
 
+
 ### Action: propagate-spot-tags
 <a name="action-propagate-spot-tags"></a>
 📌 **Description:**
@@ -1067,6 +1082,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1158,6 +1174,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: reboot
 <a name="action-reboot"></a>
 📌 **Description:**
@@ -1195,6 +1212,7 @@ required:
 - type
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1230,6 +1248,7 @@ required:
 - type
 ```
 
+
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
 📌 **Description:**
@@ -1261,6 +1280,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: resize
 <a name="action-resize"></a>
@@ -1317,6 +1337,7 @@ required:
 - type
 ```
 
+
 ### Action: send-command
 <a name="action-send-command"></a>
 📌 **Description:**
@@ -1370,6 +1391,7 @@ required:
 - command
 ```
 
+
 ### Action: set-instance-profile
 <a name="action-set-instance-profile"></a>
 📌 **Description:**
@@ -1410,6 +1432,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-metadata-access
 <a name="action-set-metadata-access"></a>
@@ -1500,6 +1523,7 @@ required:
 - type
 ```
 
+
 ### Action: set-monitoring
 <a name="action-set-monitoring"></a>
 📌 **Description:**
@@ -1547,6 +1571,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: snapshot
 <a name="action-snapshot"></a>
@@ -1609,6 +1634,7 @@ required:
 - type
 ```
 
+
 ### Action: start
 <a name="action-start"></a>
 📌 **Description:**
@@ -1645,6 +1671,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: stop
 <a name="action-stop"></a>
@@ -1698,6 +1725,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1734,6 +1762,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: tag-trim
 <a name="action-tag-trim"></a>
@@ -1801,6 +1830,7 @@ required:
 - type
 ```
 
+
 ### Action: terminate
 <a name="action-terminate"></a>
 📌 **Description:**
@@ -1844,6 +1874,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1910,7 +1941,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: check-permissions
 <a name="filter-check-permissions"></a>
@@ -1981,6 +2013,7 @@ required:
 - match
 ```
 
+
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
 📌 **Description:**
@@ -2049,6 +2082,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: cost-optimization
 <a name="filter-cost-optimization"></a>
@@ -2136,6 +2170,7 @@ required:
 - type
 ```
 
+
 ### Filter: default-vpc
 <a name="filter-default-vpc"></a>
 📌 **Description:**
@@ -2163,6 +2198,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: ebs
 <a name="filter-ebs"></a>
@@ -2289,6 +2325,7 @@ required:
 - type
 ```
 
+
 ### Filter: ephemeral
 <a name="filter-ephemeral"></a>
 📌 **Description:**
@@ -2326,6 +2363,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -2435,6 +2473,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -2501,6 +2540,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: has-specific-managed-policy
 <a name="filter-has-specific-managed-policy"></a>
@@ -2658,6 +2698,7 @@ required:
 - type
 ```
 
+
 ### Filter: health-event
 <a name="filter-health-event"></a>
 📌 **Description:**
@@ -2710,6 +2751,7 @@ type: array
 required:
 - type
 ```
+
 
 ### Filter: image
 <a name="filter-image"></a>
@@ -2819,6 +2861,7 @@ required:
 - type
 ```
 
+
 ### Filter: image-age
 <a name="filter-image-age"></a>
 📌 **Description:**
@@ -2881,6 +2924,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: instance-age
 <a name="filter-instance-age"></a>
@@ -2946,6 +2990,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: instance-attribute
 <a name="filter-instance-attribute"></a>
@@ -3081,6 +3126,7 @@ required:
 - attribute
 ```
 
+
 ### Filter: instance-uptime
 <a name="filter-instance-uptime"></a>
 📌 **Description:**
@@ -3137,6 +3183,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -3257,6 +3304,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -3330,6 +3378,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: metrics
 <a name="filter-metrics"></a>
@@ -3450,6 +3499,7 @@ required:
 - name
 ```
 
+
 ### Filter: network-location
 <a name="filter-network-location"></a>
 📌 **Description:**
@@ -3536,6 +3586,7 @@ required:
 - key
 - type
 ```
+
 
 ### Filter: offhour
 <a name="filter-offhour"></a>
@@ -3658,6 +3709,7 @@ required:
 - type
 ```
 
+
 ### Filter: onhour
 <a name="filter-onhour"></a>
 📌 **Description:**
@@ -3779,6 +3831,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -3835,6 +3888,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -3930,6 +3984,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: security-group
 <a name="filter-security-group"></a>
@@ -4045,6 +4100,7 @@ required:
 - type
 ```
 
+
 ### Filter: singleton
 <a name="filter-singleton"></a>
 📌 **Description:**
@@ -4086,6 +4142,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: ssm
 <a name="filter-ssm"></a>
@@ -4210,6 +4267,7 @@ required:
 - type
 ```
 
+
 ### Filter: ssm-compliance
 <a name="filter-ssm-compliance"></a>
 📌 **Description:**
@@ -4289,6 +4347,7 @@ required:
 - type
 ```
 
+
 ### Filter: ssm-inventory
 <a name="filter-ssm-inventory"></a>
 📌 **Description:**
@@ -4356,6 +4415,7 @@ required:
 - type
 ```
 
+
 ### Filter: state-age
 <a name="filter-state-age"></a>
 📌 **Description:**
@@ -4415,6 +4475,7 @@ required:
 - type
 ```
 
+
 ### Filter: stop-protected
 <a name="filter-stop-protected"></a>
 📌 **Description:**
@@ -4461,6 +4522,7 @@ required:
 - type
 ```
 
+
 ### Filter: subnet
 <a name="filter-subnet"></a>
 📌 **Description:**
@@ -4488,7 +4550,7 @@ policies:
 
 <!-- It also supports finding resources on public or private subnets
 via route table introspection to determine if the subnet is
-associated to an internet gateway. -->
+associated to an internet gateway or a nat gateway. -->
 
 ```yaml
 policies:
@@ -4496,9 +4558,9 @@ policies:
    resource: aws.ec2
    filters:
      - type: subnet
+       operator: or
        igw: True
-       key: SubnetId
-       value: present
+       nat: True
 ```
 
 📌 **Schema:**
@@ -4517,6 +4579,10 @@ key:
 type: string
 match-resource:
 type: boolean
+nat:
+enum:
+- true
+- false
 op:
 enum:
 - eq
@@ -4604,6 +4670,7 @@ required:
 - type
 ```
 
+
 ### Filter: tag-count
 <a name="filter-tag-count"></a>
 📌 **Description:**
@@ -4672,6 +4739,7 @@ required:
 - type
 ```
 
+
 ### Filter: termination-protected
 <a name="filter-termination-protected"></a>
 📌 **Description:**
@@ -4717,6 +4785,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: user-data
 <a name="filter-user-data"></a>
@@ -4835,6 +4904,7 @@ required:
 - type
 ```
 
+
 ### Filter: value
 <a name="filter-value"></a>
 📌 **Description:**
@@ -4942,6 +5012,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: vpc
 <a name="filter-vpc"></a>
@@ -5056,3 +5127,4 @@ enum:
 required:
 - type
 ```
+

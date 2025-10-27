@@ -1,19 +1,23 @@
 ---
 Title: Aws.Elasticsearch
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.elasticsearch
 ---
 
-# AWS Resources Covered
-- [aws.elasticsearch](#aws-elasticsearch)
+# AWS.ELASTICSEARCH
+
+AWS Resource Type: `aws.elasticsearch`
+
 
 ## Table of Contents
-- [AWS.ELASTICSEARCH](#aws-elasticsearch)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.ELASTICSEARCH
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [delete](#action-delete)
@@ -33,7 +37,7 @@ Version: 1.0
 - [update-tls-config](#action-update-tls-config)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [cross-account](#filter-cross-account)
 - [cross-cluster](#filter-cross-cluster)
@@ -52,7 +56,7 @@ Version: 1.0
 - [value](#filter-value)
 - [vpc](#filter-vpc)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -133,6 +137,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -216,6 +221,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -243,6 +249,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: enable-auditlog
 <a name="action-enable-auditlog"></a>
@@ -288,6 +295,7 @@ required:
 - state
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -359,6 +367,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -422,6 +431,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -471,6 +481,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: modify-security-groups
 <a name="action-modify-security-groups"></a>
@@ -547,6 +558,7 @@ type:
 enum:
 - modify-security-groups
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -735,6 +747,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -857,6 +870,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -944,6 +958,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1035,6 +1050,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-matched-source-ips
 <a name="action-remove-matched-source-ips"></a>
 📌 **Description:**
@@ -1074,6 +1090,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: remove-statements
 <a name="action-remove-statements"></a>
@@ -1118,6 +1135,7 @@ required:
 - type
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1158,6 +1176,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: tag
 <a name="action-tag"></a>
@@ -1203,6 +1222,7 @@ required:
 - type
 ```
 
+
 ### Action: update-tls-config
 <a name="action-update-tls-config"></a>
 📌 **Description:**
@@ -1246,6 +1266,7 @@ required:
 - value
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1312,7 +1333,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1383,6 +1405,7 @@ required:
 - rules
 ```
 
+
 ### Filter: cross-account
 <a name="filter-cross-account"></a>
 📌 **Description:**
@@ -1412,6 +1435,8 @@ items:
 type: string
 type: array
 everyone_only:
+type: boolean
+return_allowed:
 type: boolean
 type:
 enum:
@@ -1539,6 +1564,7 @@ type: object
 required:
 - type
 ```
+
 
 ### Filter: cross-cluster
 <a name="filter-cross-cluster"></a>
@@ -1759,6 +1785,7 @@ required:
 - type
 ```
 
+
 ### Filter: event
 <a name="filter-event"></a>
 📌 **Description:**
@@ -1867,6 +1894,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1934,6 +1962,7 @@ required:
 - type
 ```
 
+
 ### Filter: has-statement
 <a name="filter-has-statement"></a>
 📌 **Description:**
@@ -1942,8 +1971,8 @@ required:
 
 Find resources with matching access policy statements.
 
-If you want to return resource statements that include the listed Action or
-NotAction, you can use PartialMatch instead of an exact match.
+If you want to return resource statements that include the listed key,
+e.g. Action, you can use PartialMatch instead of an exact match.
 
 📌 **Example Usage:**
 
@@ -2011,11 +2040,21 @@ anyOf:
 - enum:
 - Action
 - NotAction
+- Principal
+- NotPrincipal
+- Resource
+- NotResource
+- Condition
 type: string
 - items:
 - enum:
 - Action
 - NotAction
+- Principal
+- NotPrincipal
+- Resource
+- NotResource
+- Condition
 type: string
 type: array
 Principal:
@@ -2039,6 +2078,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: kms-key
 <a name="filter-kms-key"></a>
@@ -2176,6 +2216,7 @@ required:
 - type
 ```
 
+
 ### Filter: list-item
 <a name="filter-list-item"></a>
 📌 **Description:**
@@ -2295,6 +2336,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -2368,6 +2410,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: metrics
 <a name="filter-metrics"></a>
@@ -2488,6 +2531,7 @@ required:
 - name
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -2544,6 +2588,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -2639,6 +2684,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: security-group
 <a name="filter-security-group"></a>
@@ -2753,6 +2799,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: source-ip
 <a name="filter-source-ip"></a>
@@ -2877,6 +2924,7 @@ required:
 - type
 ```
 
+
 ### Filter: subnet
 <a name="filter-subnet"></a>
 📌 **Description:**
@@ -2904,7 +2952,7 @@ policies:
 
 <!-- It also supports finding resources on public or private subnets
 via route table introspection to determine if the subnet is
-associated to an internet gateway. -->
+associated to an internet gateway or a nat gateway. -->
 
 ```yaml
 policies:
@@ -2912,9 +2960,9 @@ policies:
    resource: aws.ec2
    filters:
      - type: subnet
+       operator: or
        igw: True
-       key: SubnetId
-       value: present
+       nat: True
 ```
 
 📌 **Schema:**
@@ -2933,6 +2981,10 @@ key:
 type: string
 match-resource:
 type: boolean
+nat:
+enum:
+- true
+- false
 op:
 enum:
 - eq
@@ -3019,6 +3071,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -3127,6 +3180,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: vpc
 <a name="filter-vpc"></a>
@@ -3241,3 +3295,4 @@ enum:
 required:
 - type
 ```
+

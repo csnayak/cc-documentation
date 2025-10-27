@@ -1,19 +1,23 @@
 ---
 Title: Aws.Sagemaker Processing Job
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.sagemaker-processing-job
 ---
 
-# AWS Resources Covered
-- [aws.sagemaker-processing-job](#aws-sagemaker-processing-job)
+# AWS.SAGEMAKER-PROCESSING-JOB
+
+AWS Resource Type: `aws.sagemaker-processing-job`
+
 
 ## Table of Contents
-- [AWS.SAGEMAKER-PROCESSING-JOB](#aws-sagemaker-processing-job)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.SAGEMAKER-PROCESSING-JOB
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [invoke-lambda](#action-invoke-lambda)
@@ -29,7 +33,7 @@ Version: 1.0
 - [tag](#action-tag)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [event](#filter-event)
 - [finding](#filter-finding)
 - [list-item](#filter-list-item)
@@ -38,7 +42,7 @@ Version: 1.0
 - [reduce](#filter-reduce)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -119,6 +123,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -202,6 +207,7 @@ required:
 - type
 ```
 
+
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
 📌 **Description:**
@@ -272,6 +278,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -335,6 +342,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -388,6 +396,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -576,6 +585,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -698,6 +708,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -785,6 +796,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -876,6 +888,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -910,6 +923,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
@@ -962,6 +976,7 @@ required:
 - type
 ```
 
+
 ### Action: stop
 <a name="action-stop"></a>
 📌 **Description:**
@@ -994,6 +1009,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: tag
 <a name="action-tag"></a>
@@ -1045,6 +1061,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1111,7 +1128,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1221,6 +1239,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1287,6 +1306,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1407,6 +1427,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -1481,6 +1502,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1537,6 +1559,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1632,6 +1655,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -1740,3 +1764,4 @@ enum:
 required:
 - type
 ```
+

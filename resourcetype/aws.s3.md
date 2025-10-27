@@ -1,19 +1,23 @@
 ---
 Title: Aws.S3
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.s3
 ---
 
-# AWS Resources Covered
-- [aws.s3](#aws-s3)
+# AWS.S3
+
+AWS Resource Type: `aws.s3`
+
 
 ## Table of Contents
-- [AWS.S3](#aws-s3)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.S3
-
-### Available Actions
+## Available Actions
 - [attach-encrypt](#action-attach-encrypt)
 - [auto-tag-user](#action-auto-tag-user)
 - [configure-lifecycle](#action-configure-lifecycle)
@@ -45,7 +49,13 @@ Version: 1.0
 - [toggle-versioning](#action-toggle-versioning)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
+- [Website.ErrorDocument: not-null](#filter-website.errordocument: not-null)
+- [Replication.ReplicationConfiguration.Rules: not-null](#filter-replication.replicationconfiguration.rules: not-null)
+- [name: check-website-replication](#filter-name: check-website-replication)
+- [augment-keys: 'detect'](#filter-augment-keys: 'detect')
+- [Website.ErrorDocument: not-null](#filter-website.errordocument: not-null)
+- [Replication.ReplicationConfiguration.Rules: not-null](#filter-replication.replicationconfiguration.rules: not-null)
 - [bucket-encryption](#filter-bucket-encryption)
 - [bucket-logging](#filter-bucket-logging)
 - [bucket-notification](#filter-bucket-notification)
@@ -73,7 +83,7 @@ Version: 1.0
 - [reduce](#filter-reduce)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: attach-encrypt
 <a name="action-attach-encrypt"></a>
@@ -117,6 +127,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -197,6 +208,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: configure-lifecycle
 <a name="action-configure-lifecycle"></a>
@@ -353,6 +365,7 @@ required:
 - type
 ```
 
+
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
 📌 **Description:**
@@ -435,6 +448,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -473,6 +487,7 @@ required:
 - type
 ```
 
+
 ### Action: delete-bucket-notification
 <a name="action-delete-bucket-notification"></a>
 📌 **Description:**
@@ -508,6 +523,7 @@ required:
 - statement_ids
 - type
 ```
+
 
 ### Action: delete-global-grants
 <a name="action-delete-global-grants"></a>
@@ -545,6 +561,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: encrypt-keys
 <a name="action-encrypt-keys"></a>
@@ -596,6 +613,7 @@ enum:
 - encrypt-keys
 ```
 
+
 ### Action: encryption-policy
 <a name="action-encryption-policy"></a>
 📌 **Description:**
@@ -630,6 +648,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -701,6 +720,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -764,6 +784,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -815,6 +836,7 @@ required:
 - type
 ```
 
+
 ### Action: no-op
 <a name="action-no-op"></a>
 📌 **Description:**
@@ -842,6 +864,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -1030,6 +1053,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -1152,6 +1176,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -1239,6 +1264,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -1330,6 +1356,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-statements
 <a name="action-remove-statements"></a>
 📌 **Description:**
@@ -1376,6 +1403,7 @@ required:
 - type
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -1417,6 +1445,7 @@ required:
 - type
 ```
 
+
 ### Action: remove-website-hosting
 <a name="action-remove-website-hosting"></a>
 📌 **Description:**
@@ -1444,6 +1473,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-bucket-encryption
 <a name="action-set-bucket-encryption"></a>
@@ -1531,6 +1561,7 @@ type:
 enum:
 - set-bucket-encryption
 ```
+
 
 ### Action: set-intelligent-tiering
 <a name="action-set-intelligent-tiering"></a>
@@ -1628,6 +1659,7 @@ enum:
 - set-intelligent-tiering
 ```
 
+
 ### Action: set-inventory
 <a name="action-set-inventory"></a>
 📌 **Description:**
@@ -1672,6 +1704,8 @@ enum:
 - IntelligentTieringAccessTier
 - BucketKeyStatus
 - ChecksumAlgorithm
+- ObjectAccessControlList
+- ObjectOwner
 type: array
 format:
 enum:
@@ -1708,6 +1742,7 @@ required:
 - destination
 - type
 ```
+
 
 ### Action: set-public-block
 <a name="action-set-public-block"></a>
@@ -1784,6 +1819,7 @@ required:
 - type
 ```
 
+
 ### Action: set-replication
 <a name="action-set-replication"></a>
 📌 **Description:**
@@ -1832,6 +1868,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: set-statements
 <a name="action-set-statements"></a>
@@ -1949,6 +1986,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1993,6 +2031,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: toggle-logging
 <a name="action-toggle-logging"></a>
@@ -2054,6 +2093,7 @@ required:
 - type
 ```
 
+
 ### Action: toggle-versioning
 <a name="action-toggle-versioning"></a>
 📌 **Description:**
@@ -2097,6 +2137,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -2163,7 +2204,92 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
+
+### Filter: Website.ErrorDocument: not-null
+<a name="filter-website.errordocument: not-null"></a>
+📌 **Description:**
+
+_No description available._
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: Website.ErrorDocument: not-null
+```
+
+
+### Filter: Replication.ReplicationConfiguration.Rules: not-null
+<a name="filter-replication.replicationconfiguration.rules: not-null"></a>
+📌 **Description:**
+
+_No description available._
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: Replication.ReplicationConfiguration.Rules: not-null
+```
+
+
+### Filter: name: check-website-replication
+<a name="filter-name: check-website-replication"></a>
+📌 **Description:**
+
+_No description available._
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: name: check-website-replication
+```
+
+
+### Filter: augment-keys: 'detect'
+<a name="filter-augment-keys: 'detect'"></a>
+📌 **Description:**
+
+_No description available._
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: augment-keys: 'detect'
+```
+
+
+### Filter: Website.ErrorDocument: not-null
+<a name="filter-website.errordocument: not-null"></a>
+📌 **Description:**
+
+_No description available._
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: Website.ErrorDocument: not-null
+```
+
+
+### Filter: Replication.ReplicationConfiguration.Rules: not-null
+<a name="filter-replication.replicationconfiguration.rules: not-null"></a>
+📌 **Description:**
+
+_No description available._
+
+📌 **Example Usage:**
+
+```yaml
+filters:
+  - type: Replication.ReplicationConfiguration.Rules: not-null
+```
+
 
 ### Filter: bucket-encryption
 <a name="filter-bucket-encryption"></a>
@@ -2232,6 +2358,7 @@ required:
 - type
 ```
 
+
 ### Filter: bucket-logging
 <a name="filter-bucket-logging"></a>
 📌 **Description:**
@@ -2295,6 +2422,7 @@ required:
 - op
 - type
 ```
+
 
 ### Filter: bucket-notification
 <a name="filter-bucket-notification"></a>
@@ -2421,6 +2549,7 @@ required:
 - type
 ```
 
+
 ### Filter: bucket-replication
 <a name="filter-bucket-replication"></a>
 📌 **Description:**
@@ -2523,6 +2652,7 @@ required:
 - type
 ```
 
+
 ### Filter: check-public-block
 <a name="filter-check-public-block"></a>
 📌 **Description:**
@@ -2568,6 +2698,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -2638,6 +2769,7 @@ required:
 - rules
 ```
 
+
 ### Filter: cross-account
 <a name="filter-cross-account"></a>
 📌 **Description:**
@@ -2668,6 +2800,8 @@ items:
 type: string
 type: array
 everyone_only:
+type: boolean
+return_allowed:
 type: boolean
 type:
 enum:
@@ -2796,6 +2930,7 @@ required:
 - type
 ```
 
+
 ### Filter: data-events
 <a name="filter-data-events"></a>
 📌 **Description:**
@@ -2830,6 +2965,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -2939,6 +3075,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -3006,6 +3143,7 @@ required:
 - type
 ```
 
+
 ### Filter: global-grants
 <a name="filter-global-grants"></a>
 📌 **Description:**
@@ -3061,6 +3199,7 @@ required:
 - type
 ```
 
+
 ### Filter: has-statement
 <a name="filter-has-statement"></a>
 📌 **Description:**
@@ -3069,8 +3208,8 @@ required:
 
 Find resources with matching access policy statements.
 
-If you want to return resource statements that include the listed Action or
-NotAction, you can use PartialMatch instead of an exact match.
+If you want to return resource statements that include the listed key,
+e.g. Action, you can use PartialMatch instead of an exact match.
 
 📌 **Example Usage:**
 
@@ -3138,11 +3277,21 @@ anyOf:
 - enum:
 - Action
 - NotAction
+- Principal
+- NotPrincipal
+- Resource
+- NotResource
+- Condition
 type: string
 - items:
 - enum:
 - Action
 - NotAction
+- Principal
+- NotPrincipal
+- Resource
+- NotResource
+- Condition
 type: string
 type: array
 Principal:
@@ -3166,6 +3315,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: iam-analyzer
 <a name="filter-iam-analyzer"></a>
@@ -3285,6 +3435,7 @@ required:
 - type
 ```
 
+
 ### Filter: intelligent-tiering
 <a name="filter-intelligent-tiering"></a>
 📌 **Description:**
@@ -3388,6 +3539,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: inventory
 <a name="filter-inventory"></a>
@@ -3497,6 +3649,7 @@ required:
 - type
 ```
 
+
 ### Filter: is-log-target
 <a name="filter-is-log-target"></a>
 📌 **Description:**
@@ -3547,6 +3700,7 @@ type: boolean
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -3667,6 +3821,7 @@ required:
 - type
 ```
 
+
 ### Filter: lock-configuration
 <a name="filter-lock-configuration"></a>
 📌 **Description:**
@@ -3782,6 +3937,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -3855,6 +4011,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Filter: metrics
 <a name="filter-metrics"></a>
@@ -3934,6 +4091,7 @@ required:
 - name
 ```
 
+
 ### Filter: missing-policy-statement
 <a name="filter-missing-policy-statement"></a>
 📌 **Description:**
@@ -3972,6 +4130,7 @@ required:
 - type
 ```
 
+
 ### Filter: no-encryption-statement
 <a name="filter-no-encryption-statement"></a>
 📌 **Description:**
@@ -4002,6 +4161,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
@@ -4059,6 +4219,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: ownership
 <a name="filter-ownership"></a>
@@ -4225,6 +4386,7 @@ required:
 - type
 ```
 
+
 ### Filter: reduce
 <a name="filter-reduce"></a>
 📌 **Description:**
@@ -4319,6 +4481,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -4427,3 +4590,4 @@ enum:
 required:
 - type
 ```
+

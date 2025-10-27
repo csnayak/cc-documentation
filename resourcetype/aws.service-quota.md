@@ -1,19 +1,23 @@
 ---
 Title: Aws.Service Quota
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.service-quota
 ---
 
-# AWS Resources Covered
-- [aws.service-quota](#aws-service-quota)
+# AWS.SERVICE-QUOTA
+
+AWS Resource Type: `aws.service-quota`
+
 
 ## Table of Contents
-- [AWS.SERVICE-QUOTA](#aws-service-quota)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.SERVICE-QUOTA
-
-### Available Actions
+## Available Actions
 - [invoke-lambda](#action-invoke-lambda)
 - [invoke-sfn](#action-invoke-sfn)
 - [notify](#action-notify)
@@ -23,7 +27,7 @@ Version: 1.0
 - [request-increase](#action-request-increase)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [event](#filter-event)
 - [finding](#filter-finding)
 - [list-item](#filter-list-item)
@@ -33,7 +37,7 @@ Version: 1.0
 - [usage-metric](#filter-usage-metric)
 - [value](#filter-value)
 
-### Action Details
+## Action Details
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -105,6 +109,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -167,6 +172,7 @@ required:
 - state-machine
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -355,6 +361,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -477,6 +484,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -564,6 +572,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -655,6 +664,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: request-increase
 <a name="action-request-increase"></a>
 📌 **Description:**
@@ -693,6 +703,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -759,7 +770,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -869,6 +881,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -935,6 +948,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1055,6 +1069,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1111,6 +1126,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1206,6 +1222,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: request-history
 <a name="filter-request-history"></a>
@@ -1322,6 +1339,7 @@ required:
 - type
 ```
 
+
 ### Filter: usage-metric
 <a name="filter-usage-metric"></a>
 📌 **Description:**
@@ -1366,6 +1384,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -1474,3 +1493,4 @@ enum:
 required:
 - type
 ```
+

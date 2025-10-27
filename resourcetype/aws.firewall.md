@@ -1,19 +1,23 @@
 ---
 Title: Aws.Firewall
 Category: Cloud Custodian
-Last Updated: 2025-03-22
-Version: 1.0
+Last Updated: 2025-10-27
+Version: 0.9.47
+Resource Type: aws.firewall
 ---
 
-# AWS Resources Covered
-- [aws.firewall](#aws-firewall)
+# AWS.FIREWALL
+
+AWS Resource Type: `aws.firewall`
+
 
 ## Table of Contents
-- [AWS.FIREWALL](#aws-firewall)
+- [Available Actions](#available-actions)
+- [Available Filters](#available-filters)
+- [Action Details](#action-details)
+- [Filter Details](#filter-details)
 
-## AWS.FIREWALL
-
-### Available Actions
+## Available Actions
 - [auto-tag-user](#action-auto-tag-user)
 - [copy-related-tag](#action-copy-related-tag)
 - [delete](#action-delete)
@@ -31,7 +35,7 @@ Version: 1.0
 - [update-logging-config](#action-update-logging-config)
 - [webhook](#action-webhook)
 
-### Available Filters
+## Available Filters
 - [config-compliance](#filter-config-compliance)
 - [event](#filter-event)
 - [finding](#filter-finding)
@@ -44,7 +48,7 @@ Version: 1.0
 - [value](#filter-value)
 - [vpc](#filter-vpc)
 
-### Action Details
+## Action Details
 
 ### Action: auto-tag-user
 <a name="action-auto-tag-user"></a>
@@ -125,6 +129,7 @@ required:
 - tag
 - type
 ```
+
 
 ### Action: copy-related-tag
 <a name="action-copy-related-tag"></a>
@@ -208,6 +213,7 @@ required:
 - type
 ```
 
+
 ### Action: delete
 <a name="action-delete"></a>
 📌 **Description:**
@@ -241,6 +247,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: invoke-lambda
 <a name="action-invoke-lambda"></a>
@@ -312,6 +319,7 @@ required:
 - function
 ```
 
+
 ### Action: invoke-sfn
 <a name="action-invoke-sfn"></a>
 📌 **Description:**
@@ -375,6 +383,7 @@ required:
 - type
 ```
 
+
 ### Action: mark-for-op
 <a name="action-mark-for-op"></a>
 📌 **Description:**
@@ -423,6 +432,7 @@ type: string
 required:
 - type
 ```
+
 
 ### Action: notify
 <a name="action-notify"></a>
@@ -611,6 +621,7 @@ enum:
 - notify
 ```
 
+
 ### Action: post-finding
 <a name="action-post-finding"></a>
 📌 **Description:**
@@ -733,6 +744,7 @@ required:
 - type
 ```
 
+
 ### Action: post-item
 <a name="action-post-item"></a>
 📌 **Description:**
@@ -820,6 +832,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: put-metric
 <a name="action-put-metric"></a>
@@ -911,6 +924,7 @@ required:
 - metric_name
 ```
 
+
 ### Action: remove-tag
 <a name="action-remove-tag"></a>
 📌 **Description:**
@@ -949,6 +963,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: rename-tag
 <a name="action-rename-tag"></a>
@@ -1001,6 +1016,7 @@ required:
 - type
 ```
 
+
 ### Action: tag
 <a name="action-tag"></a>
 📌 **Description:**
@@ -1043,6 +1059,7 @@ required:
 - type
 ```
 
+
 ### Action: update-delete-protection
 <a name="action-update-delete-protection"></a>
 📌 **Description:**
@@ -1072,6 +1089,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Action: update-logging-config
 <a name="action-update-logging-config"></a>
@@ -1120,6 +1138,7 @@ type:
 enum:
 - update-logging-config
 ```
+
 
 ### Action: webhook
 <a name="action-webhook"></a>
@@ -1186,7 +1205,8 @@ required:
 - type
 ```
 
-### Filter Details
+
+## Filter Details
 
 ### Filter: config-compliance
 <a name="filter-config-compliance"></a>
@@ -1256,6 +1276,7 @@ enum:
 required:
 - rules
 ```
+
 
 ### Filter: event
 <a name="filter-event"></a>
@@ -1365,6 +1386,7 @@ required:
 - type
 ```
 
+
 ### Filter: finding
 <a name="filter-finding"></a>
 📌 **Description:**
@@ -1431,6 +1453,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: list-item
 <a name="filter-list-item"></a>
@@ -1551,6 +1574,7 @@ required:
 - type
 ```
 
+
 ### Filter: logging-config
 <a name="filter-logging-config"></a>
 📌 **Description:**
@@ -1646,6 +1670,7 @@ required:
 - type
 ```
 
+
 ### Filter: marked-for-op
 <a name="filter-marked-for-op"></a>
 📌 **Description:**
@@ -1720,6 +1745,7 @@ required:
 - type
 ```
 
+
 ### Filter: ops-item
 <a name="filter-ops-item"></a>
 📌 **Description:**
@@ -1776,6 +1802,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: reduce
 <a name="filter-reduce"></a>
@@ -1872,6 +1899,7 @@ required:
 - type
 ```
 
+
 ### Filter: subnet
 <a name="filter-subnet"></a>
 📌 **Description:**
@@ -1899,7 +1927,7 @@ policies:
 
 <!-- It also supports finding resources on public or private subnets
 via route table introspection to determine if the subnet is
-associated to an internet gateway. -->
+associated to an internet gateway or a nat gateway. -->
 
 ```yaml
 policies:
@@ -1907,9 +1935,9 @@ policies:
    resource: aws.ec2
    filters:
      - type: subnet
+       operator: or
        igw: True
-       key: SubnetId
-       value: present
+       nat: True
 ```
 
 📌 **Schema:**
@@ -1928,6 +1956,10 @@ key:
 type: string
 match-resource:
 type: boolean
+nat:
+enum:
+- true
+- false
 op:
 enum:
 - eq
@@ -2014,6 +2046,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: value
 <a name="filter-value"></a>
@@ -2122,6 +2155,7 @@ enum:
 required:
 - type
 ```
+
 
 ### Filter: vpc
 <a name="filter-vpc"></a>
@@ -2236,3 +2270,4 @@ enum:
 required:
 - type
 ```
+
